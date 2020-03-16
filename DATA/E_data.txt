@@ -1,0 +1,4 @@
+% load S data (Evaporation from lakes)
+%  time (years)     E (m year^-1) 
+   1994             0
+   2013             0
