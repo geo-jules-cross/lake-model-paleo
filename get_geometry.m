@@ -29,14 +29,24 @@ function [geometry] = get_geometry(flags)
     if( tester == 0 )
         %  read in hypsometry data
         % ------------------------
-        load DATA/A_h_data_min_new.txt;
-        h_data = A_h_data_min_new(:,1);
-        A_data = A_h_data_min_new(:,2);
-        clear A_h_data_min_new;
-%
-        % set initial lake level
-%         h_0 = 60; % Max
-        h_0 = 21; % Min
+        % Min Scenario
+        if(flags.GLW_scenario == 0)
+            load DATA/A_h_data_min_new.txt;
+            h_data = A_h_data_min_new(:,1);
+            A_data = A_h_data_min_new(:,2);
+            clear A_h_data_min_new;
+            % set initial lake level
+            h_0 = 21;
+        end
+        % Max Scenario
+        if(flags.GLW_scenario == 1)
+            load DATA/A_h_data_max_new.txt;
+            h_data = A_h_data_max_new(:,1);
+            A_data = A_h_data_max_new(:,2);
+            clear A_h_data_max_new;
+            % set initial lake level
+            h_0 = 60;
+        end
         %  or set it up here
         % ------------------
     else

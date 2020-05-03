@@ -246,36 +246,36 @@ clear ;
     %set(gca, 'ylim', [0, 0.5*max(h_nodes)] )
     set(gca, 'ylim', [0, max(h_nodes)] )
     set(gca, 'FontSize', 12, 'linewidth', 1)
-%
-%
-% plot history of inflows and their sum
-% --------------------------------------
-    j_fig = j_fig+1;
-    figure(j_fig); clf;
-    hold on;box on; grid on;
-    plot(t_vec/1e3, Q_glacier, 'linewidth', 1.2, 'linestyle','-', ...
-       'color', [0 1 0])
-   %
-    xlabel('Time  (ka)')
-    ylabel('Lake-edge fluxes  (m^3 a^{-1})')
-    title(' Lake inputs: Green - Q\_glacier')
-  %  set(gca, 'ylim', [-0.1e5, 1.2e5] )
-    set(gca, 'FontSize', 12, 'linewidth', 1)
-%
-%
-% plot history of climate inputs on lake surface and their sum
-% ------------------------------------------------------------
-    j_fig = j_fig+1;
-    figure(j_fig); clf;
-    hold on;box on; grid on;
-    plot(t_vec/1e3, S, 'linewidth', 1.2, 'linestyle','-', ...
-       'color', [0 0 1])
-  %
-    xlabel('Time  (ka)')
-    ylabel('Lake-edge fluxes  (m^3 a^{-1})')
-    title('Lake inputs: Green - P. Blue - S. Red - E. Black - total')
-  %  set(gca, 'ylim', [-0.1e5, 1.2e5] )
-    set(gca, 'FontSize', 12, 'linewidth', 1)
+% %
+% %
+% % plot history of inflows and their sum
+% % --------------------------------------
+%     j_fig = j_fig+1;
+%     figure(j_fig); clf;
+%     hold on;box on; grid on;
+%     plot(t_vec/1e3, Q_glacier, 'linewidth', 1.2, 'linestyle','-', ...
+%        'color', [0 1 0])
+%    %
+%     xlabel('Time  (ka)')
+%     ylabel('Lake-edge fluxes  (m^3 a^{-1})')
+%     title(' Lake inputs: Green - Q\_glacier')
+%   %  set(gca, 'ylim', [-0.1e5, 1.2e5] )
+%     set(gca, 'FontSize', 12, 'linewidth', 1)
+% %
+% %
+% % plot history of climate inputs on lake surface and their sum
+% % ------------------------------------------------------------
+%     j_fig = j_fig+1;
+%     figure(j_fig); clf;
+%     hold on;box on; grid on;
+%     plot(t_vec/1e3, S, 'linewidth', 1.2, 'linestyle','-', ...
+%        'color', [0 0 1])
+%   %
+%     xlabel('Time  (ka)')
+%     ylabel('Lake-edge fluxes  (m^3 a^{-1})')
+%     title('Lake inputs: Green - P. Blue - S. Red - E. Black - total')
+%   %  set(gca, 'ylim', [-0.1e5, 1.2e5] )
+%     set(gca, 'FontSize', 12, 'linewidth', 1)
 %
 %
 % plot lake-level history h(t)
@@ -297,34 +297,34 @@ clear ;
         'Marker', '.', 'MarkerSize',12,'linestyle', 'none', ...
         'color', [0 0 0])
     end
-%
-%
-% plot lake-area history A(t)
-% ----------------------------
-    j_fig = j_fig+1;
-    figure(j_fig);  clf;
-    hold on;box on; grid on;
-    plot(t_vec/1e3, A/1e6, 'linewidth', 1.2, 'linestyle','-', ...
-       'color', [1 0 0])
-    xlabel('Time  (ka)')
-    ylabel('Lake area (km^2)')
-    title('    Lake-area history ')
-  %  set(gca, 'ylim', [0, 200] )
-    set(gca, 'FontSize', 12, 'linewidth', 1)
-%
-%
-% plot lake-volume history V(t)
-% ----------------------------
-    j_fig = j_fig+1;
-    figure(j_fig);  clf;
-    hold on;box on; grid on;
-    plot(t_vec/1e3, V/1e9, 'linewidth', 1.2, 'linestyle','-', ...
-       'color', [0 1 0])
-    xlabel('Time  (ka)')
-    ylabel('Lake volume (km^3)')
-    title('    Lake-volume history ')
-  %  set(gca, 'ylim', [0, 200] )
-    set(gca, 'FontSize', 12, 'linewidth', 1)
-%
-%
-%
+% %
+% %
+% % plot lake-area history A(t)
+% % ----------------------------
+%     j_fig = j_fig+1;
+%     figure(j_fig);  clf;
+%     hold on;box on; grid on;
+%     plot(t_vec/1e3, A/1e6, 'linewidth', 1.2, 'linestyle','-', ...
+%        'color', [1 0 0])
+%     xlabel('Time  (ka)')
+%     ylabel('Lake area (km^2)')
+%     title('    Lake-area history ')
+%   %  set(gca, 'ylim', [0, 200] )
+%     set(gca, 'FontSize', 12, 'linewidth', 1)
+% %
+% %
+% % plot lake-volume history V(t)
+% % ----------------------------
+%     j_fig = j_fig+1;
+%     figure(j_fig);  clf;
+%     hold on;box on; grid on;
+%     plot(t_vec/1e3, V/1e9, 'linewidth', 1.2, 'linestyle','-', ...
+%        'color', [0 1 0])
+%     xlabel('Time  (ka)')
+%     ylabel('Lake volume (km^3)')
+%     title('    Lake-volume history ')
+%   %  set(gca, 'ylim', [0, 200] )
+%     set(gca, 'FontSize', 12, 'linewidth', 1)
+% %
+% %
+% %

@@ -8,7 +8,12 @@ function [ flags ] = get_input_flags
 %     0 - use modeled meltwater inflow
 %     1 - use interpolated inflow
 
-    flags.Q_glacier_flag = 0;
+    flags.Q_glacier_flag    = 0;
+%
+%     0 - min
+%     1 - max
+
+    flags.GLW_scenario      = 1;  
 %
 %     0 - read flux histories from external files or 
 %     1 - generate time series in matlab function get_fluxes.m
@@ -22,9 +27,10 @@ function [ flags ] = get_input_flags
 %
     flags.A_h_flag       	= 0;    %  Hypsometry
 %
-% Get melt?	
-%
-    flags.melt				= 0;	% Rebuild melt
+%     0 - no
+%     1 - yes
+
+    flags.melt				= 1;	% Rebuild melt
 %
 %
 %  flags are returned in a structure called "flags"
