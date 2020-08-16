@@ -14,15 +14,17 @@ function [] = get_melt
 
     % Min Scenario
     if(flags.GLW_scenario == 0)
-            runDate='20200310_RIS/';
+%             runDate='20200310_RIS/';
+%             runname= 'basin-ris-min.mat';
+            runDate='TEST_Bryce/';
             runname= 'basin-ris-min.mat';
     end
     % Max Scenario
     if(flags.GLW_scenario == 1)
-            runDate='20200310_RIS/';
-            runname= 'basin-ris-max.mat';
-%             runDate='TEST_Bryce/';
+%             runDate='20200310_RIS/';
 %             runname= 'basin-ris-max.mat';
+            runDate='TEST_Bryce/';
+            runname= 'basin-ris-max.mat';
     end
 
     path2output=[outDirectory runDate runname];
@@ -33,6 +35,10 @@ function [] = get_melt
     
 % Initialize lake arrays
     GLWYrVol = [];
+%
+    LBYrVol = [];
+    LHYrVol = [];
+    LFYrVol = [];
     
 % Define basin order
     basinOrder=[10,...
@@ -49,20 +55,27 @@ function [] = get_melt
         for b=1:36
             for y=1:18
                 doB = find(basinkey == basinOrder(b));
-                if (basinOrder(b) == 33 || basinOrder(b) == 34 || basinOrder(b) >= 41 && basinOrder(b) <= 73 || basinOrder(b) == 90)
-                    GLWYrVol(y,b) = modelSmVol(y,doB);
+                % if (basinOrder(b) == 33 || basinOrder(b) == 34 || basinOrder(b) >= 41 && basinOrder(b) <= 73 || basinOrder(b) == 90)
+                %     GLWYrVol(y,b) = modelSmVol(y,doB);
+                %
+                % Bonney
+                if (basinOrder(b) <= 29)
+                    LBYrVol(y,b) = modelSmVol(y,doB);
+                % Hoare
+                elseif (basinOrder(b) == 33 || basinOrder(b) == 34 || basinOrder(b) == 41 || basinOrder(b) == 42)
+                    LHYrVol(y,b) = modelSmVol(y,doB);
+                % Fryxell
+                elseif(basinOrder(b) >= 43 && basinOrder(b) <= 90)
+                    LFYrVol(y,b) = modelSmVol(y,doB);
                 end
             end
         end
 
-        % Setup a constant inflow (e.g. subaqueous melt)
-        Q_constant_GLW(1:18,1) = 0;
-
         % Sum lake arrays
-        GLWYrVol = sum(GLWYrVol,2)+Q_constant_GLW;
+        lakeYrVol = [sum(LBYrVol,2) sum(LHYrVol,2) sum(LFYrVol,2)];
         
         % Output file
-        file = 'DATA/Q_glacier_min.txt';
+        fileList = {'DATA/Q_glacier_min_LB.txt', 'DATA/Q_glacier_min_LH.txt', 'DATA/Q_glacier_min_LF.txt'};
 
     end % Min Scenario
     
@@ -81,33 +94,35 @@ function [] = get_melt
         Q_constant_GLW(1:18,1) = 0;
 
         % Sum lake arrays
-        GLWYrVol = sum(GLWYrVol,2)+Q_constant_GLW;
+        lakeYrVol = sum(GLWYrVol,2)+Q_constant_GLW;
         
         % Output file
-        file = 'DATA/Q_glacier_max.txt';
+        fileList = {'DATA/Q_glacier_max.txt'};
 
     end % Max Scenario
     
 % Data output file
-%     outDirectory = 'Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/';
     outDirectory = '/DATA/';
 
 % Format and update input data files
-    fileID = fopen(file,'w');
-    fmt = '%d \t \t %f \n';
-    fprintf(fileID, '%s \n', '% load Q_glacier data');
-    fprintf(fileID, '%s \n', '% time (years) Q_glacier (m^3 year^-1)');
-    c = 1;
-    for yr=times.t_vec
-        fprintf(fileID, fmt, [yr GLWYrVol(c,1)]);
-        if c < 18
-            c = c + 1;
-        else
-            c = 1;
+    for f=1:length(fileList)
+        file = fileList{f};
+        fileID = fopen(file,'w');
+        fmt = '%d \t \t %f \n';
+        fprintf(fileID, '%s \n', '% load Q_glacier data');
+        fprintf(fileID, '%s \n', '% time (years) Q_glacier (m^3 year^-1)');
+        c = 1;
+        for yr=times.t_vec
+            fprintf(fileID, fmt, [yr lakeYrVol(c,f)]);
+            if c < 18
+                c = c + 1;
+            else
+                c = 1;
+            end
         end
+        fmt = '%d \t \t %f';
     end
-    fmt = '%d \t \t %f';
-    
+
     close all
     
 end

@@ -24,28 +24,75 @@ function [geometry] = get_geometry(flags)
 % or if tester != 0    set it up here
 %----------------------------------------
 %
+%  read in hypsometry data
+% ------------------------
     tester = flags.A_h_flag;
+    basin = flags.basin;  % check lake basin
     %
     if( tester == 0 )
-        %  read in hypsometry data
-        % ------------------------
         % Min Scenario
         if(flags.GLW_scenario == 0)
-            load DATA/A_h_data_min_new.txt;
-            h_data = A_h_data_min_new(:,1);
-            A_data = A_h_data_min_new(:,2);
-            clear A_h_data_min_new;
-            % set initial lake level
-            h_0 = 21;
+            %
+            % Bonney
+            if( basin == 1) 
+                load DATA/A_data_LB.txt;
+                h_data = A_data_LB(:,1);
+                A_data = A_data_LB(:,2);
+                clear A_data_LB;
+                % set initial lake level
+                h_0 = 23.73;   % dry lakebed
+            %
+            % Hoare
+            elseif( basin == 2) 
+                load DATA/A_data_LH.txt;
+                h_data = A_data_LH(:,1);
+                A_data = A_data_LH(:,2);
+                clear A_data_LH;
+                % set initial lake level
+                h_0 = 39.93;    % dry lakebed
+            %
+            % Fryxell
+            elseif( basin == 3) 
+                load DATA/A_data_LF.txt;
+                h_data = A_data_LF(:,1);
+                A_data = A_data_LF(:,2);
+                clear A_data_LF;
+                % set initial lake level
+                h_0 = -4.21;    % dry lakebed
+                %
+            end
         end
         % Max Scenario
         if(flags.GLW_scenario == 1)
-            load DATA/A_h_data_max_new.txt;
-            h_data = A_h_data_max_new(:,1);
-            A_data = A_h_data_max_new(:,2);
-            clear A_h_data_max_new;
-            % set initial lake level
-            h_0 = 60;
+            %
+            % Bonney
+            if( basin == 1) 
+                load DATA/A_data_LB.txt;
+                h_data = A_data_LB(:,1);
+                A_data = A_data_LB(:,2);
+                clear A_data_LB;
+                % set initial lake level
+                h_0 = 23.73;   % dry lakebed
+            %
+            % Hoare
+            elseif( basin == 2) 
+                load DATA/A_data_LH.txt;
+                h_data = A_data_LH(:,1);
+                A_data = A_data_LH(:,2);
+                clear A_data_LH;
+                % set initial lake level
+                h_0 = 39.93;    % dry lakebed
+            %
+            % Fryxell
+            elseif( basin == 3) 
+                load DATA/A_data_LF.txt;
+                h_data = A_data_LF(:,1);
+                A_data = A_data_LF(:,2);
+                clear A_data_LF;
+                % set initial lake level
+                h_0 = -4.21;    % dry lakebed
+                %
+            end
         end
         %  or set it up here
         % ------------------

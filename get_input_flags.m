@@ -13,7 +13,7 @@ function [ flags ] = get_input_flags
 %     0 - min
 %     1 - max
 
-    flags.GLW_scenario      = 1;  
+    flags.GLW_scenario      = 0;  
 %
 %     0 - read flux histories from external files or 
 %     1 - generate time series in matlab function get_fluxes.m
@@ -31,6 +31,13 @@ function [ flags ] = get_input_flags
 %     1 - yes
 
     flags.melt				= 1;	% Rebuild melt
+%
+%	Determine which basin to run
+%     1 - bonney
+%     2 - hoare
+%     3 - fryxell
+%
+	flags.basin			 	= 1;	 % Basin to run 
 %
 %
 %  flags are returned in a structure called "flags"

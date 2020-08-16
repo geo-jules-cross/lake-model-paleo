@@ -84,17 +84,21 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo"
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA"
 	],
 	"file_history":
 	[
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_LF.txt",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_geometry.m",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/spatial-analysis/data-gis/terrain/lidar_2015/tv_2015_dem_2m.tfw",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_h_data_min.txt",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_h_data_glw.txt",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_h_data_max.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_h_data_min_new.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_h_data_max_new.txt",
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_h_data_max.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/Q_glacier_max.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/Q_glacier_min.txt",
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_h_data_glw.txt",
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_h_data_min.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/S_data_max.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/Q_glacier.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/Q_glacier_GLW.txt",
@@ -212,10 +216,7 @@
 		"/Z/Antarctica_Julian/icemelt-cross/os_info.inc",
 		"/Z/Antarctica_Julian/icemelt-cross/README_v04.md",
 		"/Z/Antarctica_PastUsers/ANTARCTICA_Matt/icemelt_spatial_prod/input/specalb.dat",
-		"/E/.VolumeIcon.icns",
-		"/Z/Antarctica_Julian/icemelt-cross/input/mie.dat",
-		"/Z/Antarctica_Julian/icemelt-cross/input/specalb.dat",
-		"/Z/Antarctica_Julian/icemelt-cross/input/solar.dat"
+		"/E/.VolumeIcon.icns"
 	],
 	"find":
 	{
@@ -288,7 +289,7 @@
 		"cols":
 		[
 			0.0,
-			0.5,
+			0.47489364833,
 			1.0
 		],
 		"rows":
@@ -348,7 +349,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},

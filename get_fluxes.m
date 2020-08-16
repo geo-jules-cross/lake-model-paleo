@@ -26,12 +26,35 @@ function [fluxes] = get_fluxes(times, flags)
 %  e.g. inflow from melt streams coming off ice dam
 %
     tester = flags.Q_glacier_flag;
+    basin = flags.basin;  % check lake basin
+
+    tester = flags.Q_glacier_flag;
     if( tester == 0 )
         %  read in GQ_direct_data from a file
         % -----------------------------------
-        load DATA/Q_glacier_min.txt;
-        t_data         = Q_glacier_min(:,1);
-        Q_glacier_data = Q_glacier_min(:,2);
+        % Min Scenario
+        if(flags.GLW_scenario == 0)
+            if( basin == 1) 
+                load DATA/Q_glacier_min_LB.txt;
+                t_data         = Q_glacier_min_LB(:,1);
+                Q_glacier_data = Q_glacier_min_LB(:,2);
+                %
+            elseif( basin == 2)
+                load DATA/Q_glacier_min_LH.txt;
+                t_data         = Q_glacier_min_LH(:,1);
+                Q_glacier_data = Q_glacier_min_LH(:,2);
+                %
+            elseif( basin == 3)
+                load DATA/Q_glacier_min_LF.txt;
+                t_data         = Q_glacier_min_LF(:,1);
+                Q_glacier_data = Q_glacier_min_LF(:,2);
+        % Max Scenario
+        elseif(flags.GLW_scenario == 1)
+            load DATA/Q_glacier_max.txt;
+            t_data         = Q_glacier_max(:,1);
+            Q_glacier_data = Q_glacier_max(:,2);
+            %
+        end
         %
         %  or set up Q_glacier_data here
         % ------------------------------
