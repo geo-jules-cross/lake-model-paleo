@@ -123,6 +123,7 @@ function [fluxes] = get_fluxes(times, flags)
                 load DATA/Q_glacier_min_LF.txt;
                 t_data         = Q_glacier_min_LF(:,1);
                 Q_glacier_data = Q_glacier_min_LF(:,2);
+              end
         end
         %
     else
