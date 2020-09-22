@@ -37,7 +37,7 @@ function [ flags ] = get_input_flags
 %     2 - hoare
 %     3 - fryxell
 %
-	flags.basin			 	= 1;	 % Basin to run 
+	flags.basin			 	= 3;	 % Basin to run 
 %
 %
 %  flags are returned in a structure called "flags"

@@ -107,9 +107,23 @@ function [fluxes] = get_fluxes(times, flags)
     if( tester == 0 )
         %  read in sublimation history from a file
         % ----------------------------------------
-        load DATA/S_data_glw.txt;
-        t_data = S_data_glw(:,1);
-        S_data = S_data_glw(:,2);
+        % Min Scenario
+        if(flags.GLW_scenario == 0)
+            if( basin == 1) 
+                load DATA/Q_glacier_min_LB.txt;
+                t_data         = Q_glacier_min_LB(:,1);
+                Q_glacier_data = Q_glacier_min_LB(:,2);
+                %
+            elseif( basin == 2)
+                load DATA/Q_glacier_min_LH.txt;
+                t_data         = Q_glacier_min_LH(:,1);
+                Q_glacier_data = Q_glacier_min_LH(:,2);
+                %
+            elseif( basin == 3)
+                load DATA/Q_glacier_min_LF.txt;
+                t_data         = Q_glacier_min_LF(:,1);
+                Q_glacier_data = Q_glacier_min_LF(:,2);
+        end
         %
     else
         %
