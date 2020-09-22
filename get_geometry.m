@@ -40,7 +40,7 @@ function [geometry] = get_geometry(flags)
                 A_data = A_data_LB(:,2);
                 clear A_data_LB;
                 % set initial lake level
-                h_0 = 23.73;   % dry lakebed
+                h_0 = 24.056;   % dry lakebed
             %
             % Hoare
             elseif( basin == 2) 
@@ -49,7 +49,7 @@ function [geometry] = get_geometry(flags)
                 A_data = A_data_LH(:,2);
                 clear A_data_LH;
                 % set initial lake level
-                h_0 = 39.93;    % dry lakebed
+                h_0 = 39.855;    % dry lakebed
             %
             % Fryxell
             elseif( basin == 3) 
@@ -58,7 +58,7 @@ function [geometry] = get_geometry(flags)
                 A_data = A_data_LF(:,2);
                 clear A_data_LF;
                 % set initial lake level
-                h_0 = -4.21;    % dry lakebed
+                h_0 = -4.512;    % dry lakebed
                 %
             end
         end
