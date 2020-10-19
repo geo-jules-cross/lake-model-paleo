@@ -35,7 +35,7 @@ function [ flags ] = get_input_flags
 %     0 - no
 %     1 - yes
 
-    flags.sublimation		= 1;	% Rebuild melt
+    flags.sublimation		= 1;	% Rebuild sublimation
 %
 %	Determine which basin to run
 %     1 - bonney
