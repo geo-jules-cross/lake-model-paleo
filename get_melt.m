@@ -14,17 +14,13 @@ function [] = get_melt
 
     % Min Scenario
     if(flags.GLW_scenario == 0)
-%             runDate='20200310_RIS/';
-%             runname= 'basin-ris-min.mat';
-            runDate='TEST_Bryce/';
+            runDate='RIS_Bryce/20200617_ris-min_minus-4C/';
             runname= 'basin-ris-min.mat';
     end
     % Max Scenario
     if(flags.GLW_scenario == 1)
-%             runDate='20200310_RIS/';
-%             runname= 'basin-ris-max.mat';
-            runDate='TEST_Bryce/';
-            runname= 'basin-ris-max.mat';
+            runDate='RIS_Bryce/20200617_ris-min_minus-4C/';
+            runname= 'basin-ris-min.mat';
     end
 
     path2output=[outDirectory runDate runname];

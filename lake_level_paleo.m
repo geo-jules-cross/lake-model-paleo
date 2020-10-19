@@ -47,9 +47,12 @@ clear ;
 %
     flags = get_input_flags;
 
-% Check melt flag and rebuild glacier input file
+% Check melt flag and rebuild input files
     if(flags.melt == 1)
       get_melt;
+    end
+    if(flags.sublimation == 1)
+      get_sublimation;
     end
 
 % Set up structure "fluxes" with input and output histories at times t_vec
@@ -285,7 +288,8 @@ clear ;
     hold on;box on; grid on;
     plot(t_vec/1e3, h, 'linewidth', 1.2, 'linestyle','-', ...
        'color', [0 0 1])
-    xlabel('Time  (ka)')
+   xlim([-22, -20])
+   xlabel('Time  (ka)')
     ylabel('Lake depth (m)')
     title('    Lake-level history ')
  %   set(gca, 'ylim', [0, 0.75*max(h_nodes)] )

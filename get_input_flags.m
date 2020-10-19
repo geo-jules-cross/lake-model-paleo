@@ -32,12 +32,17 @@ function [ flags ] = get_input_flags
 
     flags.melt				= 1;	% Rebuild melt
 %
+%     0 - no
+%     1 - yes
+
+    flags.sublimation		= 1;	% Rebuild melt
+%
 %	Determine which basin to run
 %     1 - bonney
 %     2 - hoare
 %     3 - fryxell
 %
-	flags.basin			 	= 1;	 % Basin to run 
+	flags.basin			 	= 3;	 % Basin to run 
 %
 %
 %  flags are returned in a structure called "flags"

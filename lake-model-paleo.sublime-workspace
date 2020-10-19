@@ -16,26 +16,18 @@
 	"buffers":
 	[
 		{
-			"file": "DATA/A_h_data_min_Fr_Hoare_Basin.txt",
+			"file": "get_input_flags.m",
 			"settings":
 			{
-				"buffer_size": 25650,
-				"line_ending": "Windows"
+				"buffer_size": 1060,
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "DATA/A_h_data_min_TV.txt",
+			"contents": "(base) Julian@Julians-MacBook lake-model-paleo %              \n(base) Julian@Julians-MacBook lake-model-paleo % git commit -a -m 'Updated get_geom​‌​\netry.m to reflect actual empty lake basin'\n[master 8801ef8] Updated get_geometry.m to reflect actual empty lake basin\n 1 file changed, 3 insertions(+), 3 deletions(-)\n(base) Julian@Julians-MacBook lake-model-paleo % git push\nEnumerating objects: 5, done.        \nCounting objects: 100% (5/5), done.   \nDelta compression using up to 8 threads\nCompressing objects: 100% (3/3), done.\nWriting objects: 100% (3/3), 358 bytes | 358.00 KiB/s, done.  \nTotal 3 (delta 2), reused 0 (delta 0)\nremote: Resolving deltas: 100% (2/2), completed with 2 local objects.              \nTo https://github.com/geo-jules-cross/lake-model-paleo.git\n   1de4734..8801ef8  master -> master\n(base) Julian@Julians-MacBook lake-model-paleo % \ng%                                                                ​‌​\n(base) Julian@Julians-MacBook lake-model-paleo % git commit -a -m ​‌​\n'Updated hypsometry input reading'\n[master 92dc0de] Updated hypsometry input reading\n 2 files changed, 18 insertions(+), 4 deletions(-)\n(base) Julian@Julians-MacBook lake-model-paleo % git push\nEnumerating objects: 7, done.\nCounting objects: 100% (7/7), done.\nDelta compression using up to 8 threads\nCompressing objects: 100% (4/4), done.\nWriting objects: 100% (4/4), 383 bytes | 383.00 KiB/s, done.\nTotal 4 (delta 3), reused 0 (delta 0)\nremote: Resolving deltas: 100% (3/3), completed with 3 local objec​‌​\nts.                                                               \nTo https://github.com/geo-jules-cross/lake-model-paleo.git\n   8801ef8..92dc0de  master -> master\n(base) Julian@Julians-MacBook lake-model-paleo % git commit -a -m ​‌​\n'Updated hypsometry input reading'\n[master 4b2fa3e] Updated hypsometry input reading\n 2 files changed, 2 insertions(+), 1 deletion(-)\n(base) Julian@Julians-MacBook lake-model-paleo % git push\nEnumerating objects: 7, done.                                     \nCounting objects: 100% (7/7), done.\nDelta compression using up to 8 threads\nCompressing objects: 100% (4/4), done.\nWriting objects: 100% (4/4), 381 bytes | 381.00 KiB/s, done.\nTotal 4 (delta 3), reused 0 (delta 0)\nremote: Resolving deltas: 100% (3/3), completed with 3 local objec​‌​\nts.                                                               \nTo https://github.com/geo-jules-cross/lake-model-paleo.git\n   92dc0de..4b2fa3e  master -> master\n(base) Julian@Julians-MacBook lake-model-paleo % git commit -a -m ​‌​\n'Updated hypsometry input reading'\n[master 3ad4793] Updated hypsometry input reading\n 1 file changed, 9 insertions(+), 9 deletions(-)\n(base) Julian@Julians-MacBook lake-model-paleo % git push\nEnumerating objects: 5, done.                                     \nCounting objects: 100% (5/5), done.\nDelta compression using up to 8 threads\nCompressing objects: 100% (3/3), done.\nWriting objects: 100% (3/3), 366 bytes | 366.00 KiB/s, done.\nTotal 3 (delta 2), reused 0 (delta 0)\nremote: Resolving deltas: 100% (2/2), completed with 2 local objec​‌​\nts.                                                               \nTo https://github.com/geo-jules-cross/lake-model-paleo.git\n   4b2fa3e..3ad4793  master -> master\n(base) Julian@Julians-MacBook lake-model-paleo % \n(base) Julian@Julians-MacBook lake-model-paleo % \n(base) Julian@Julians-MacBook lake-model-paleo % \n(base) Julian@Julians-MacBook lake-model-paleo % ",
 			"settings":
 			{
-				"buffer_size": 49750,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "(base) Julian@Julians-MacBook lake-model-paleo % git status                     \nOn branch master                                                                \nYour branch is up to date with 'origin/master'.                                 \n                                                                                \nChanges not staged for commit:                                                  \n  (use \"git add/rm <file>...\" to update what will be committed)                 \n  (use \"git checkout -- <file>...\" to discard changes in working directory)     \n                                                                                \n        deleted:    DATA/A_h_data_glw.txt                                       \n        deleted:    DATA/A_h_data_max.txt                                       \n        deleted:    DATA/A_h_data_max_new.txt                                   \n        deleted:    DATA/A_h_data_min.txt                                       \n        deleted:    DATA/A_h_data_min_new.txt                                   \n        modified:   DATA/Q_glacier_min.txt                                      \n        modified:   get_fluxes.m                                                \n        modified:   get_geometry.m                                              \n        modified:   get_input_flags.m                                           \n        modified:   get_melt.m                                                  \n        modified:   lake-model-paleo.sublime-workspace                          \n                                                                                \nUntracked files:                                                                \n  (use \"git add <file>...\" to include in what will be committed)                \n                                                                                \n        DATA/A_data_LB.txt                                                      \n        DATA/A_data_LF.txt                                                      \n        DATA/A_data_LH.txt                                                      \n        DATA/Q_glacier_min_LB.txt                                               \n        DATA/Q_glacier_min_LF.txt                                               \n        DATA/Q_glacier_min_LH.txt                                               \n        DATA/old/                                                               \n                                                                                \nno changes added to commit (use \"git add\" and/or \"git commit -a\")               \n(base) Julian@Julians-MacBook lake-model-paleo % git add -A                     \nwarning: CRLF will be replaced by LF in DATA/A_data_LB.txt.                     \nThe file will have its original line endings in your working directory          \n(base) Julian@Julians-MacBook lake-model-paleo % git status                     \nOn branch master                                                                \nYour branch is up to date with 'origin/master'.                                 \n                                                                                \nChanges to be committed:                                                        \n  (use \"git reset HEAD <file>...\" to unstage)                                   \n                                                                                \n        new file:   DATA/A_data_LB.txt                                          \n        new file:   DATA/A_data_LF.txt                                          \n        new file:   DATA/A_data_LH.txt                                          \n        modified:   DATA/Q_glacier_min.txt                                      \n        new file:   DATA/Q_glacier_min_LB.txt                                   \n        new file:   DATA/Q_glacier_min_LF.txt                                   \n        new file:   DATA/Q_glacier_min_LH.txt                                   \n        renamed:    DATA/A_h_data_glw.txt -> DATA/old/A_h_data_glw.txt          \n        renamed:    DATA/A_h_data_max.txt -> DATA/old/A_h_data_max.txt          \n        renamed:    DATA/A_h_data_max_new.txt -> DATA/old/A_h_data_max_new.txt  \n        renamed:    DATA/A_h_data_min.txt -> DATA/old/A_h_data_min.txt          \n        renamed:    DATA/A_h_data_min_new.txt -> DATA/old/A_h_data_min_new.txt  \n        modified:   get_fluxes.m                                                \n        modified:   get_geometry.m                                              \n        modified:   get_input_flags.m                                           \n        modified:   get_melt.m\n        modified:   lake-model-paleo.sublime-workspace\n\n(base) Julian@Julians-MacBook lake-model-paleo % git commit -a -m 'Updated Paleo​‌​\n model, runs with three seperate lake basins'                                   \n[master dff13ae] Updated Paleo model, runs with three seperate lake basins\n 17 files changed, 49501 insertions(+), 12058 deletions(-)\n create mode 100755 DATA/A_data_LB.txt\n create mode 100755 DATA/A_data_LF.txt\n create mode 100755 DATA/A_data_LH.txt\n rewrite DATA/Q_glacier_min.txt (89%)\n create mode 100644 DATA/Q_glacier_min_LB.txt\n create mode 100644 DATA/Q_glacier_min_LF.txt\n create mode 100644 DATA/Q_glacier_min_LH.txt\n rename DATA/{ => old}/A_h_data_glw.txt (100%)\n rename DATA/{ => old}/A_h_data_max.txt (100%)\n rename DATA/{ => old}/A_h_data_max_new.txt (100%)\n rename DATA/{ => old}/A_h_data_min.txt (100%)\n rename DATA/{ => old}/A_h_data_min_new.txt (100%)\n(base) Julian@Julians-MacBook lake-model-paleo % git push                       \nEnumerating objects: 24, done.\nCounting objects: 100% (24/24), done.\nDelta compression using up to 8 threads\nCompressing objects: 100% (16/16), done.\nWriting objects: 100% (16/16), 174.36 KiB | 6.46 MiB/s, done.\nTotal 16 (delta 5), reused 0 (delta 0)\nremote: Resolving deltas: 100% (5/5), completed with 5 local objects.           \nTo https://github.com/geo-jules-cross/lake-model-paleo.git\n   02ed56d..dff13ae  master -> master\n(base) Julian@Julians-MacBook lake-model-paleo % git status                     \nOn branch master\nYour branch is up to date with 'origin/master'.\n\nnothing to commit, working tree clean\n(base) Julian@Julians-MacBook lake-model-paleo % \n(base) Julian@Julians-MacBook lake-model-paleo % ",
-			"settings":
-			{
-				"buffer_size": 6333,
+				"buffer_size": 3428,
 				"line_ending": "Unix",
 				"name": "Login Shell",
 				"scratch": true
@@ -54,12 +46,20 @@
 		"selected_items":
 		[
 			[
-				"terminusview",
-				"Terminus: Open Default Shell in Tab (View)"
+				"termi",
+				"Preferences: Terminus Settings"
+			],
+			[
+				"term",
+				"Terminus Utilities: Select Theme"
 			],
 			[
 				"ter",
 				"Preferences: Terminus Settings"
+			],
+			[
+				"terminusview",
+				"Terminus: Open Default Shell in Tab (View)"
 			],
 			[
 				"pa",
@@ -114,23 +114,31 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo",
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA"
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo"
 	],
 	"file_history":
 	[
-		"/Users/Julian/Desktop/for_AB/hourly_stream_data_Matlab_script/parse_stream_data_hourly.m",
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_input_flags.m",
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_h_data_min_Fr_Hoare_Basin.txt",
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_times.m",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_melt.m",
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/Q_glacier_min_LH.txt",
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/Q_glacier_min_LF.txt",
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/Q_glacier_min_LB.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_fluxes.m",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/S_data_4C_LB.txt",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/Q_glacier_min_LB.txt",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/Q_glacier_min_LH.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_geometry.m",
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/lake_level_paleo.m",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_LH.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_LF.txt",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_LB.txt",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/S_data_4C_LH.txt",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/S_data_4C_LF.txt",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_input_flags.m",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/lake_level_paleo.m",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_min_FH.txt",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_min_FHB.txt",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_h_data_min_Fr_Hoare_Basin.txt",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/t_anlyt.m",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_h_data_min_TV.txt",
+		"/Users/Julian/Desktop/for_AB/hourly_stream_data_Matlab_script/parse_stream_data_hourly.m",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_times.m",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/Q_glacier_min_LF.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/spatial-analysis/data-gis/terrain/lidar_2015/tv_2015_dem_2m.tfw",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_h_data_min.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_h_data_glw.txt",
@@ -237,20 +245,11 @@
 		"/C/Users/jucross/Documents/MDV-Lakes-Thesis/lake-model/data-raw/hypso-data/hyps_LF.txt",
 		"/Z/Antarctica_Julian/icemelt-cross/output/20190604_SURFR/logs/roughness-5264087.log",
 		"/Z/Antarctica_Julian/icemelt-cross/run_all_cluster.sh",
-		"/C/Users/jucross/Desktop/T_mean_grid_from_MM.f",
-		"/Z/Antarctica_Julian/icemelt-versions/icemelt_hoffman_v00/icemelt_hoffman_20180325/micromet_helpers/calc_mean_annual_temp_grid/T_mean_grid_from_MM.f",
-		"/Z/Antarctica_Julian/icemelt-cross/icemelt_cross_v04.f95",
-		"/Z/Antarctica_PastUsers/ANTARCTICA_Matt/MM_TV/reparse_mm_gdat_by_cell.f",
-		"/Z/Antarctica_PastUsers/ANTARCTICA_Matt/Micromet_working_code/calc_mean_annual_temp_grid/T_mean_grid_from_MM.f",
-		"/Z/Antarctica_Julian/micromet-verisons/micromet_aw_20180827/ARIMA_QAQC/formatted_data_v3_9416/TV_met_94-16.dat",
-		"/Z/Antarctica_PastUsers/ANTARCTICA_Matt/MM_TV/TV_met_9409.dat",
-		"/Z/Antarctica_Julian/micromet-verisons/micromet_aw_20180827/MMbatch_all_sites/extra_met/shortwave.dat",
-		"/Z/Antarctica_Julian/micromet-verisons/micromet_aw_20180827/MMbatch_all_sites/TV_met_94-16.dat",
-		"/Z/Antarctica_Julian/micromet-verisons/micromet_aw_20180827/ARIMA_QAQC/FRLM/preproc_MicroMet.f"
+		"/C/Users/jucross/Desktop/T_mean_grid_from_MM.f"
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 40.0
 	},
 	"find_in_files":
 	{
@@ -281,16 +280,16 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "DATA/A_h_data_min_Fr_Hoare_Basin.txt",
-					"semi_transient": false,
+					"file": "get_input_flags.m",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 25650,
+						"buffer_size": 1060,
 						"regions":
 						{
 						},
@@ -321,21 +320,51 @@
 							},
 							"bracket_highlighter.regions":
 							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
@@ -345,144 +374,12 @@
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
-								"bh_curly_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content"
+								"bh_curly_content"
 							],
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/Matlab/Matlab.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "DATA/A_h_data_min_TV.txt",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 49750,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								48933,
-								48933
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content"
-							],
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 42994.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -495,19 +392,19 @@
 			"sheets":
 			[
 				{
-					"buffer": 2,
+					"buffer": 1,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6333,
+						"buffer_size": 3428,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6333,
-								6333
+								3428,
+								3428
 							]
 						],
 						"settings":
@@ -538,7 +435,7 @@
 							],
 							"scroll_past_end": true,
 							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"terminus.highlight_counter": 359,
+							"terminus.highlight_counter": 1,
 							"terminus_view": true,
 							"terminus_view.args":
 							{
@@ -572,14 +469,14 @@
 							"terminus_view.natural_keyboard": true,
 							"terminus_view.panel_name": null,
 							"terminus_view.tag": null,
-							"terminus_view.viewport_y": 1288.0,
+							"terminus_view.viewport_y": 910.0,
 							"word_wrap": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1288.0,
+						"translation.y": 910.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -613,7 +510,7 @@
 		"cols":
 		[
 			0.0,
-			0.493137307363,
+			0.566762197318,
 			1.0
 		],
 		"rows":
@@ -681,7 +578,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 272.0,
+	"side_bar_width": 308.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

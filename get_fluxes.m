@@ -110,19 +110,19 @@ function [fluxes] = get_fluxes(times, flags)
         % Min Scenario
         if(flags.GLW_scenario == 0)
             if( basin == 1) 
-                load DATA/S_data_4C_LB.txt;
-                t_data         = S_data_4C_LB(:,1);
-                S_data = S_data_4C_LB(:,2);
+                load DATA/S_data_LB.txt;
+                t_data         = S_data_LB(:,1);
+                S_data = S_data_LB(:,2);
                 %
             elseif( basin == 2)
-                load DATA/S_data_4C_LH.txt;
-                t_data         = S_data_4C_LH(:,1);
-                S_data = S_data_4C_LH(:,2);
+                load DATA/S_data_LH.txt;
+                t_data         = S_data_LH(:,1);
+                S_data = S_data_LH(:,2);
                 %
             elseif( basin == 3)
-                load DATA/S_data_4C_LF.txt;
-                t_data         = S_data_4C_LF(:,1);
-                S_data = S_data_4C_LF(:,2);
+                load DATA/S_data_LF.txt;
+                t_data         = S_data_LF(:,1);
+                S_data = S_data_LF(:,2);
               end
         end
         %
