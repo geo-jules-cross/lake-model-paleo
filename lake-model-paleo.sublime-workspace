@@ -19,19 +19,27 @@
 			"file": "get_input_flags.m",
 			"settings":
 			{
-				"buffer_size": 1133,
+				"buffer_size": 1140,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "(base) Julian@Julians-MacBook lake-model-pale\no %                                          \n(base) Julian@Julians-MacBook lake-model-paleo %           \n(base) Julian@Julians-MacBook lake-model-paleo %                \n(base) Julian@Julians-MacBook lake-model-paleo % git status              \nOn branch master                             \nYour branch is up to date with 'origin/master'.\n\nChanges not staged for commit:\n  (use \"git add/rm <file>...\" to update what will be committed)\n  (use \"git checkout -- <file>...\" to discard changes in working director​‌​\ny)\n\n        deleted:    DATA/Q_glacier_max.txt\n        deleted:    DATA/Q_glacier_min.txt\n        deleted:    DATA/S_data_4C_LB.txt\n        deleted:    DATA/S_data_4C_LF.txt\n        deleted:    DATA/S_data_4C_LH.txt\n        deleted:    DATA/S_data_glw.txt\n        modified:   get_fluxes.m\n        modified:   get_input_flags.m\n        modified:   get_melt.m\n        modified:   lake-model-paleo.sublime-workspace\n        modified:   lake_level_paleo.m\n\nUntracked files:\n  (use \"git add <file>...\" to include in what will be committed)\n\n        DATA/085048.bin\n        DATA/127087.bin\n        DATA/153093.bin\n        DATA/S_data_LB.txt\n        DATA/S_data_LF.txt\n        DATA/S_data_LH.txt\n        DATA/hoe_pa.bin\n        DATA/lf_albedo.mat\n        get_sublimation.m\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")\n(base) Julian@Julians-MacBook lake-model-paleo % git add -A              \n(base) Julian@Julians-MacBook lake-model-paleo % git status              \nOn branch master\nYour branch is up to date with 'origin/master'.\n\nChanges to be committed:\n  (use \"git reset HEAD <file>...\" to unstage)\n\n        new file:   DATA/085048.bin\n        new file:   DATA/127087.bin\n        new file:   DATA/153093.bin\n        deleted:    DATA/Q_glacier_max.txt\n        deleted:    DATA/Q_glacier_min.txt\n        deleted:    DATA/S_data_4C_LB.txt\n        deleted:    DATA/S_data_4C_LF.txt\n        deleted:    DATA/S_data_4C_LH.txt\n        new file:   DATA/S_data_LB.txt\n        new file:   DATA/S_data_LF.txt\n        new file:   DATA/S_data_LH.txt\n        deleted:    DATA/S_data_glw.txt\n        new file:   DATA/hoe_pa.bin\n        new file:   DATA/lf_albedo.mat\n        modified:   get_fluxes.m\n        modified:   get_input_flags.m\n        modified:   get_melt.m\n        new file:   get_sublimation.m\n        modified:   lake-model-paleo.sublime-workspace\n        modified:   lake_level_paleo.m\n\n(base) Julian@Julians-MacBook lake-model-paleo % git commit -a -m 'Update​‌​\nd paleo-lake model to include sublimation subroutine for easy adjustments​‌​\n to temperature.'                                                        \n[master f7e0e70] Updated paleo-lake model to include sublimation subrouti​‌​\nne for easy adjustments to temperature.\n 20 files changed, 36354 insertions(+), 72217 deletions(-)\n create mode 100644 DATA/085048.bin\n create mode 100644 DATA/127087.bin\n create mode 100644 DATA/153093.bin\n delete mode 100644 DATA/Q_glacier_max.txt\n delete mode 100644 DATA/Q_glacier_min.txt\n delete mode 100755 DATA/S_data_4C_LB.txt\n delete mode 100755 DATA/S_data_4C_LF.txt\n delete mode 100755 DATA/S_data_4C_LH.txt\n create mode 100644 DATA/S_data_LB.txt\n create mode 100644 DATA/S_data_LF.txt\n create mode 100644 DATA/S_data_LH.txt\n delete mode 100755 DATA/S_data_glw.txt\n create mode 100755 DATA/hoe_pa.bin\n create mode 100644 DATA/lf_albedo.mat\n create mode 100644 get_sublimation.m\n(base) Julian@Julians-MacBook lake-model-paleo % git push                \nEnumerating objects: 24, done.\nCounting objects: 100% (24/24), done.\nDelta compression using up to 8 threads\nCompressing objects: 100% (17/17), done.\nWriting objects: 100% (17/17), 10.02 MiB | 659.00 KiB/s, done.\nTotal 17 (delta 6), reused 0 (delta 0)\nremote: Resolving deltas: 100% (6/6), completed with 6 local objects.    \nTo https://github.com/geo-jules-cross/lake-model-paleo.git\n   3ad4793..f7e0e70  master -> master\n(base) Julian@Julians-MacBook lake-model-paleo % git status              \nOn branch master\nYour branch is up to date with 'origin/master'.\n\nnothing to commit, working tree clean\n(base) Julian@Julians-MacBook lake-model-paleo % ",
+			"contents": "(base) Julian@Julians-MacBook lake-model-paleo % ",
 			"settings":
 			{
-				"buffer_size": 4182,
+				"buffer_size": 49,
 				"line_ending": "Unix",
 				"name": "Login Shell",
 				"scratch": true
+			}
+		},
+		{
+			"file": "get_sublimation.m",
+			"settings":
+			{
+				"buffer_size": 9275,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -310,15 +318,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1133,
+						"buffer_size": 1140,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1037,
-								1037
+								933,
+								933
 							]
 						],
 						"settings":
@@ -341,6 +349,21 @@
 							},
 							"bracket_highlighter.regions":
 							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
@@ -351,51 +374,36 @@
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
 							],
 							"syntax": "Packages/Matlab/Matlab.sublime-syntax"
 						},
@@ -403,13 +411,13 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -417,15 +425,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4182,
+						"buffer_size": 49,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4182,
-								4182
+								49,
+								49
 							]
 						],
 						"settings":
@@ -456,6 +464,7 @@
 							],
 							"scroll_past_end": true,
 							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
 							"terminus.highlight_counter": 400,
 							"terminus_view": true,
 							"terminus_view.args":
@@ -490,11 +499,116 @@
 							"terminus_view.natural_keyboard": true,
 							"terminus_view.panel_name": null,
 							"terminus_view.tag": null,
-							"terminus_view.viewport_y": 672.0,
+							"terminus_view.viewport_y": 0.0,
+							"translate_tabs_to_spaces": true,
 							"word_wrap": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 672.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "get_sublimation.m",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 9275,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/Matlab/Matlab.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

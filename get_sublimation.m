@@ -10,6 +10,10 @@ function [] = get_sublimation
     flags = get_input_flags;
 
     years(:,1)= 1995:2012;
+    
+    % Adjustments
+%     Temp_adj = -4.0;
+    Temp_adj = 0;
 
     % Lake Hoare Pa
     pafilename=['DATA/', 'hoe_pa.bin'];
@@ -35,9 +39,6 @@ function [] = get_sublimation
     epsilon = 0.62201;
     Ma      = .03256;               % mass kg of one mole air
     xkappa = 0.4;
-
-    % Adjustments
-    Temp_adj = -4.0;
     
     % Import  MicroMet Data
     iname='085'; jname='048';
