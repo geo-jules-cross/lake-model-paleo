@@ -48,12 +48,29 @@ function [fluxes] = get_fluxes(times, flags)
                 load DATA/Q_glacier_min_LF.txt;
                 t_data         = Q_glacier_min_LF(:,1);
                 Q_glacier_data = Q_glacier_min_LF(:,2);
+                %
         % Max Scenario
         elseif(flags.GLW_scenario == 1)
             load DATA/Q_glacier_max.txt;
             t_data         = Q_glacier_max(:,1);
             Q_glacier_data = Q_glacier_max(:,2);
             %
+        % Min Scenario
+        elseif(flags.GLW_scenario == 2)
+            if( basin == 1) 
+                load DATA/Q_glacier_noRIS_LB.txt;
+                t_data         = Q_glacier_noRIS_LB(:,1);
+                Q_glacier_data = Q_glacier_noRIS_LB(:,2);
+                %
+            elseif( basin == 2)
+                load DATA/Q_glacier_noRIS_LH.txt;
+                t_data         = Q_glacier_noRIS_LH(:,1);
+                Q_glacier_data = QQ_glacier_noRIS_LH(:,2);
+                %
+            elseif( basin == 3)
+                load DATA/Q_glacier_noRIS_LF.txt;
+                t_data         = Q_glacier_noRIS_LF(:,1);
+                Q_glacier_data = Q_glacier_noRIS_LF(:,2);
         end
         %
         %  or set up Q_glacier_data here

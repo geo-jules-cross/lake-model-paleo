@@ -10,10 +10,11 @@ function [ flags ] = get_input_flags
 
     flags.Q_glacier_flag    = 0;
 %
-%     0 - min
-%     1 - max
+%     0 - Min RIS
+%     1 - Max RIS
+%	  2 - No RIS
 
-    flags.GLW_scenario      = 0;  
+    flags.GLW_scenario      = 2;  
 %
 %     0 - read flux histories from external files or 
 %     1 - generate time series in matlab function get_fluxes.m

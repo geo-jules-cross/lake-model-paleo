@@ -25,6 +25,11 @@ function [] = get_melt
             runDate='RIS_Bryce/20201015_ris-min_minus-4C/';
             runname= 'basin-ris-min.mat';
     end
+    % No RIS Scenario
+    if(flags.GLW_scenario == 2)
+            runDate='RIS_Bryce/20201015_ris-min_minus-4C/';
+            runname= 'basin-ris-min.mat';
+    end
 
     path2output=[outDirectory runDate runname];
     melt= fullfile(path2output);
@@ -99,6 +104,35 @@ function [] = get_melt
         fileList = {'DATA/Q_glacier_max.txt'};
 
     end % Max Scenario
+
+    % No RIS Scenario
+    if(flags.GLW_scenario == 2)
+        for b=1:36
+            for y=1:18
+                doB = find(basinkey == basinOrder(b));
+                % if (basinOrder(b) == 33 || basinOrder(b) == 34 || basinOrder(b) >= 41 && basinOrder(b) <= 73 || basinOrder(b) == 90)
+                %     GLWYrVol(y,b) = modelSmVol(y,doB);
+                %
+                % Bonney
+                if (basinOrder(b) <= 29)
+                    LBYrVol(y,b) = modelSmVol(y,doB);
+                % Hoare
+                elseif (basinOrder(b) == 33 || basinOrder(b) == 34 || basinOrder(b) == 41 || basinOrder(b) == 42)
+                    LHYrVol(y,b) = modelSmVol(y,doB);
+                % Fryxell
+                elseif(basinOrder(b) >= 43 && basinOrder(b) <= 90)
+                    LFYrVol(y,b) = modelSmVol(y,doB);
+                end
+            end
+        end
+
+        % Sum lake arrays
+        lakeYrVol = [sum(LBYrVol,2) sum(LHYrVol,2) sum(LFYrVol,2)];
+        
+        % Output file
+        fileList = {'DATA/Q_glacier_noRIS_LB.txt', 'DATA/Q_glacier_noRIS_LH.txt', 'DATA/Q_glacier_noRIS_LF.txt'};
+
+    end % No RIS Scenario
     
 % Data output file
     outDirectory = '/DATA/';
