@@ -61,9 +61,8 @@ function [geometry] = get_geometry(flags)
                 h_0 = -4.512;    % dry lakebed
                 %
             end
-        end
         % Max Scenario
-        if(flags.GLW_scenario == 1)
+        elseif(flags.GLW_scenario == 1)
             %
             % Bonney
             if( basin == 1) 
@@ -94,7 +93,7 @@ function [geometry] = get_geometry(flags)
                 %
             end
         % No RIS Scenario
-        if(flags.GLW_scenario == 2)
+        elseif(flags.GLW_scenario == 2)
             %
             % Bonney
             if( basin == 1) 
