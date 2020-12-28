@@ -49,6 +49,7 @@ function [fluxes] = get_fluxes(times, flags)
                 t_data         = Q_glacier_min_LF(:,1);
                 Q_glacier_data = Q_glacier_min_LF(:,2);
                 %
+            end
         % Max Scenario
         elseif(flags.GLW_scenario == 1)
             load DATA/Q_glacier_max.txt;
@@ -71,6 +72,7 @@ function [fluxes] = get_fluxes(times, flags)
                 load DATA/Q_glacier_noRIS_LF.txt;
                 t_data         = Q_glacier_noRIS_LF(:,1);
                 Q_glacier_data = Q_glacier_noRIS_LF(:,2);
+            end
         end
         %
         %  or set up Q_glacier_data here
@@ -140,9 +142,45 @@ function [fluxes] = get_fluxes(times, flags)
                 load DATA/S_data_LF.txt;
                 t_data         = S_data_LF(:,1);
                 S_data = S_data_LF(:,2);
-              end
+            end
         end
         %
+        % Max Scenario
+        if(flags.GLW_scenario == 1)
+            if( basin == 1) 
+                load DATA/S_data_LB.txt;
+                t_data         = S_data_LB(:,1);
+                S_data = S_data_LB(:,2);
+                %
+            elseif( basin == 2)
+                load DATA/S_data_LH.txt;
+                t_data         = S_data_LH(:,1);
+                S_data = S_data_LH(:,2);
+                %
+            elseif( basin == 3)
+                load DATA/S_data_LF.txt;
+                t_data         = S_data_LF(:,1);
+                S_data = S_data_LF(:,2);
+            end
+        end
+        % No RIS Scenario
+        if(flags.GLW_scenario == 2)
+            if( basin == 1) 
+                load DATA/S_data_LB.txt;
+                t_data         = S_data_LB(:,1);
+                S_data = S_data_LB(:,2);
+                %
+            elseif( basin == 2)
+                load DATA/S_data_LH.txt;
+                t_data         = S_data_LH(:,1);
+                S_data = S_data_LH(:,2);
+                %
+            elseif( basin == 3)
+                load DATA/S_data_LF.txt;
+                t_data         = S_data_LF(:,1);
+                S_data = S_data_LF(:,2);
+            end
+        end
     else
         %
         %  or set up here
