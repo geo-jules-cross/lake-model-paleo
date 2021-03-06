@@ -1,8 +1,8 @@
 %  hypsometry data
 %  created by Bryce Glenn, Julian Cross, and Maciek Obryk
 %  orthometric heights
-%  based on local datum (WGS84 -56.3 m)
-%  Depth h (m)    Area A Min RIS (m^2)	Area A No RIS (m^2)
+%  based on local datum (WGS84 +53.4 m)
+%  Depth h (m)    Area A (m^2)
 24.056	0
 24.156	4
 24.256	228

@@ -32,7 +32,8 @@ function [fluxes, geometry] = update_fluxes(spill_case, flags, fluxes, geometry,
     load DATA/A_data_noRIS_LB.txt;
     load DATA/A_data_noRIS_LH.txt;
     load DATA/A_data_noRIS_LF.txt;
-    %%% Need to create hypso for large lakes and no RIS %%%
+    load DATA/A_data_noRIS_FH.txt;
+    load DATA/A_data_noRIS_FHB.txt;
 
     % Load sublimation
     load DATA/S_data_LB.txt;
@@ -58,53 +59,45 @@ function [fluxes, geometry] = update_fluxes(spill_case, flags, fluxes, geometry,
                     Q_glacier_data = Q_glacier_min_LB(:,2);
                     h_data = A_data_min_LB(:,1);
                     A_data = A_data_min_LB(:,2);
+                    S_data = S_data_LB(:,2);
                 elseif( basin == 2)
                     Q_glacier_data = Q_glacier_min_LH(:,2);
                     h_data = A_data_min_LH(:,1);
                     A_data = A_data_min_LH(:,2);
+                    S_data = S_data_LH(:,2);
                 elseif( basin == 3)
                     Q_glacier_data = Q_glacier_min_LF(:,2);
                     h_data = A_data_min_LF(:,1);
                     A_data = A_data_min_LF(:,2);
+                    S_data = S_data_LF(:,2);
                 end
             elseif(scenario == 2) % No RIS Scenario
                 if( basin == 1) 
                     Q_glacier_data = Q_glacier_noRIS_LB(:,2);
                     h_data = A_data_noRIS_LB(:,1);
                     A_data = A_data_noRIS_LB(:,2);
+                    S_data = S_data_LB(:,2);
                 elseif( basin == 2)
                     Q_glacier_data = Q_glacier_noRIS_LH(:,2);
                     h_data = A_data_noRIS_LH(:,1);
                     A_data = A_data_noRIS_LH(:,2);
+                    S_data = S_data_LH(:,2);
                 elseif( basin == 3)
                     Q_glacier_data = Q_glacier_noRIS_LF(:,2);
                     h_data = A_data_noRIS_LF(:,1);
                     A_data = A_data_noRIS_LF(:,2);
+                    S_data = S_data_LF(:,2);
                 end
-            end
-            % Geometry and sublimation
-            if( basin == 1) 
-                S_data = S_data_LB(:,2);
-            elseif( basin == 2)
-                S_data = S_data_LH(:,2);
-            elseif( basin == 3)
-                S_data = S_data_LF(:,2);
             end
             %
         case 1 % Lake Fryxell -> Lake Hoare
             disp('  Lake Fryxell -> Lake Hoare')
             if(scenario == 0) % Min Scenario
                 if( basin == 2)
-                    Q_glacier_data = Q_glacier_min_LH(:,2) +...
-                                    Q_glacier_min_LF(:,2);
-                    S_data = (S_data_LF(:,2) + S_data_LF(:,2))/2;
+                    Q_glacier_data = Q_glacier_min_LH(:,2) + Q_glacier_min_LF(:,2);
+                    S_data = S_data_LH(:,2);
                     h_data = A_data_min_LH(:,1);
                     A_data = A_data_min_LH(:,2);
-                % if( basin == 2)
-                %     Q_glacier_data = Q_glacier_min_LH(:,2) + Q_glacier_min_LF(:,2);
-                %     S_data = S_data_LH(:,2);
-                %     h_data = A_data_min_FH(:,1);
-                %     A_data = A_data_min_FH(:,2);
                 elseif( basin == 3)
                     Q_glacier_data = zeros(1,n_steps+1);
                     S_data = zeros(1,n_steps+1);
@@ -213,16 +206,14 @@ function [fluxes, geometry] = update_fluxes(spill_case, flags, fluxes, geometry,
             disp('  Lake Hoare + Lake Fryxell')
             if(scenario == 0) % Min Scenario
                 if( basin == 2) || ( basin == 3)
-                    Q_glacier_data = Q_glacier_min_LH(:,2) +...
-                                    Q_glacier_min_LF(:,2);
+                    Q_glacier_data = Q_glacier_min_LH(:,2) + Q_glacier_min_LF(:,2);
                     S_data = (S_data_LF(:,2) + S_data_LF(:,2))/2;
                     h_data = A_data_min_FH(:,1);
                     A_data = A_data_min_FH(:,2);
                 end
             elseif(scenario == 2) % No RIS Scenario
                 if( basin == 2) || ( basin == 3)
-                    Q_glacier_data = Q_glacier_noRIS_LH(:,2) +...
-                                    Q_glacier_noRIS_LF(:,2);
+                    Q_glacier_data = Q_glacier_noRIS_LH(:,2) + Q_glacier_noRIS_LF(:,2);
                     S_data = (S_data_LF(:,2) + S_data_LF(:,2))/2;
                     h_data = A_data_noRIS_FH(:,1);
                     A_data = A_data_noRIS_FH(:,2);
@@ -307,6 +298,8 @@ function [fluxes, geometry] = update_fluxes(spill_case, flags, fluxes, geometry,
     clear DATA/A_data_noRIS_LB.txt;
     clear DATA/A_data_noRIS_LH.txt;
     clear DATA/A_data_noRIS_LF.txt;
+    clear DATA/A_data_noRIS_FH.txt;
+    clear DATA/A_data_noRIS_FHB.txt;
 
     % Clear sublimation
     clear DATA/S_data_LB.txt;

@@ -2,7 +2,7 @@
 %  created by Bryce Glenn, Julian Cross, and Maciek Obryk
 %  orthometric heights
 %  based on local datum (WGS84 +53.4 m)
-%  Depth h (m)    Area A Min RIS (m^2)	Area A No RIS (m^2)
+%  Depth h (m)    Area A (m^2)
 156.470	99812632
 156.570	99870660
 156.670	99927684

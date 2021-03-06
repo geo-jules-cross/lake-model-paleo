@@ -14,8 +14,8 @@ function [times] = get_times
     n_steps = 12000;
 %
 %     t_0     = -22000;
-%     t_end   = -21750;
-%     n_steps = 250;  
+%     t_end   = -21700;
+%     n_steps = 300;  
 %
 % set up time step and vector of times for calculations
     dt = (t_end - t_0) / n_steps;

@@ -174,6 +174,10 @@ for basin = basinloop
     h(1)  = h_new;
     A(1)  = A_new;
     V(1)  = V_new;
+% Save initial values to lake structure
+    lake(basin).h(1) = h(1);
+    lake(basin).A(1) = A(1);
+    lake(basin).V(1) = V(1);
 %
 %
 % Start time stepping here
@@ -203,20 +207,19 @@ for basin = basinloop
             if (basin == 3)
                 if (h_old > FH_spillpoint-1)
                     % Lake Fryxell -> Lake Hoare
-                    spill_case(basin,j) = 1;
-                    %spill_case(basin,j) = 5; % just for now
+                    %spill_case(basin,j) = 1;
+                    spill_case(basin,j) = 5;
                 else
                     % reset to three separate lakes
                     spill_case(basin,j) = 0;
                 end
             elseif (basin == 2)
-                if (h_old > FH_spillpoint-1) && (lake(3).h(j-1) > FH_spillpoint-1)
+                if (h_old > FH_spillpoint-1) && (lake(3).h(j) > FH_spillpoint-1)
                     % Lake Hoare + Lake Fryxell
                     spill_case(basin,j) = 5;
-                elseif (lake(3).h(j-1) > FH_spillpoint-1) 
+                elseif (h_old < FH_spillpoint-1) && (lake(3).h(j) > FH_spillpoint-1) 
                     % Lake Fryxell -> Lake Hoare
                     spill_case(basin,j) = 1;
-                    %spill_case(basin,j) = 5; % just for now
                 elseif (h_old > HB_spillpoint-1)
                     % Lake Hoare -> Lake Bonney
                     spill_case(basin,j) = 3;
@@ -225,10 +228,10 @@ for basin = basinloop
                     spill_case(basin,j) = 0;
                 end
             elseif (basin == 1)
-                if (h_old > FH_spillpoint-1) && (lake(2).h(j-1) > HB_spillpoint-1) && (lake(3).h(j-1) > HB_spillpoint-1)
+                if (h_old > FH_spillpoint-1) && (lake(2).h(j) > HB_spillpoint-1) && (lake(3).h(j) > HB_spillpoint-1)
                     % Lake Bonney + Lake Hoare + Lake Fryxell
                     spill_case(basin,j) = 6;
-                elseif (lake(2).h(j-1) > HB_spillpoint-1)
+                elseif (lake(2).h(j) > HB_spillpoint-1)
                     % Lake Hoare -> Lake Bonney
                     spill_case(basin,j) = 3; 
                 elseif (h_old > HB_spillpoint-1)
@@ -318,29 +321,14 @@ for basin = basinloop
     %
     %
     % Save results to lake structure
-        lake(basin).Q_glacier(j+1) = Q_glacier(j+1);
-        lake(basin).S(j+1) = S(j+1);
-        lake(basin).h(j+1) = h(j+1);
-        lake(basin).A(j+1) = A(j+1);
-        lake(basin).V(j+1) = V(j+1);
+        lake(basin).Q_glacier(j) = Q_glacier(j);
+        lake(basin).S(j+1) = S(j);
+        lake(basin).h(j+1) = h(j);
+        lake(basin).A(j+1) = A(j);
+        lake(basin).V(j+1) = V(j);
     %
     end  %  for j = 1:n_steps
-
-    % Save all lake results to new structure
-    lake.basin(b).h_nodes(:) = h_nodes;
-    lake.basin(b).A_nodes(:) = A_nodes;
-    lake.basin(b).V_nodes(:) = V_nodes;
-    
-    lake.Q_glacier(b,:) = Q_glacier;
-    %lake.h.glacier(b,:) = h;
-    lake.h = h;
-    lake.A(b,:) = A;
-    lake.V(b,:) = V;
-    lake.dV(b,:)= deltaV;
-    lake.S(b,:) = S;
-
-    lake.t_vec   = times.t_vec;
-
+    %
 end % for basin = 1:basinloop
 
 save('DATA/lake.mat', 'lake');
@@ -415,11 +403,10 @@ for l = 1:basinloop
     hold on;box on; grid on;
     plot(lake(l).t_vec/1e3, lake(l).h, 'linewidth', 1.2, 'linestyle','-', ...
        'color', [0 0 1])
-   xlim([-22, -20])
-   xlabel('Time  (ka)')
+    xlim([-22, -20])
+    xlabel('Time  (ka)')
     ylabel('Lake depth (m)')
     title('    Lake-level history ')
- %   set(gca, 'ylim', [0, 0.75*max(h_nodes)] )
     set(gca, 'FontSize', 12, 'linewidth', 1)
 %
 %

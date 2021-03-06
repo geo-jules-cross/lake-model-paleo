@@ -33,27 +33,40 @@ clear ;
 % dt      = time step
 % t_vec   = times at which lake level is calculated
 
-    times = get_times;
+times = get_times;
 
 % separate individual components of structure "times"
-    t_0     = times.t_0;
-    t_end   = times.t_end;
-    n_steps = times.n_steps;
-    dt      = times.dt;
-    t_vec   = times.t_vec;
+t_0     = times.t_0;
+t_end   = times.t_end;
+n_steps = times.n_steps;
+dt      = times.dt;
+t_vec   = times.t_vec;
 
 % Set up structure "flags" for reading in flux time series,
 % or generating simple time series in the code
 %
-    flags = get_input_flags;
+flags = get_input_flags;
 
 % Check melt flag and rebuild input files
-    if(flags.melt == 1)
-      get_melt;
-    end
-    if(flags.sublimation == 1)
-      get_sublimation;
-    end
+if(flags.melt == 1)
+  get_melt;
+end
+if(flags.sublimation == 1)
+  get_sublimation;
+end
+
+% Start loop through selected basins (set in get_input_flags)
+switch flags.basin
+    case {1, 2, 3}
+        basinloop = 1;
+    case 0
+        basinloop = 3;
+end
+    
+% Lake basin loop
+for b = 1:basinloop
+    
+    flags.basin = b;
 
 % Set up structure "fluxes" with input and output histories at times t_vec
 % -----------------------------------------------------------------------
@@ -227,6 +240,22 @@ clear ;
     %
     %
     end  %  for j = 1:n_steps 
+
+    % Save all lake results to new structure
+    lake.basin(b).h_nodes(:) = h_nodes;
+    lake.basin(b).A_nodes(:) = A_nodes;
+    lake.basin(b).V_nodes(:) = V_nodes;
+
+    lake.t_vec   = times.t_vec;
+    
+    lake.Q_glacier(b,:) = Q_glacier;
+    lake.h = h;
+    lake.A(b,:) = A;
+    lake.V(b,:) = V;
+    lake.dV(b,:)= deltaV;
+    lake.S(b,:) = S;
+
+end % for b = 1:basinloop
 
 save('DATA/lake.mat', 'lake');
 %
