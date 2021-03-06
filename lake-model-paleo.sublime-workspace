@@ -19,24 +19,15 @@
 			"file": "get_input_flags.m",
 			"settings":
 			{
-				"buffer_size": 1140,
-				"encoding": "UTF-8",
+				"buffer_size": 1163,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "lake_level_paleo.m",
+			"contents": "(base) Julian@Julians-MacBook lake-model-paleo % ",
 			"settings":
 			{
-				"buffer_size": 9968,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "(base) Julian@Julians-MacBook lake-model-paleo % \n(base) Julian@Julians-MacBook lake-model-paleo % git status\nOn branch master\nYour branch is up to date with 'origin/master'.\n\nChanges not staged for commit:\n  (use \"git add <file>...\" to update what will be committed)\n  (use \"git checkout -- <file>...\" to discard changes in working director​‌​\ny)\n\n        modified:   DATA/Q_glacier_min_LB.txt\n        modified:   DATA/Q_glacier_min_LF.txt\n        modified:   DATA/Q_glacier_min_LH.txt\n        modified:   DATA/S_data_LB.txt\n        modified:   DATA/S_data_LF.txt\n        modified:   DATA/S_data_LH.txt\n        modified:   get_melt.m\n        modified:   get_sublimation.m\n        modified:   lake-model-paleo.sublime-workspace\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")\n(base) Julian@Julians-MacBook lake-model-paleo % git add -A\n(base) Julian@Julians-MacBook lake-model-paleo % git commit -a -m 'Small ​‌​\nlocal changes'\n[master 40966f5] Small local changes\n 9 files changed, 72185 insertions(+), 72067 deletions(-)\n rewrite DATA/Q_glacier_min_LB.txt (88%)\n rewrite DATA/Q_glacier_min_LF.txt (79%)\n rewrite DATA/Q_glacier_min_LH.txt (90%)\n rewrite DATA/S_data_LB.txt (89%)\n rewrite DATA/S_data_LF.txt (93%)\n rewrite DATA/S_data_LH.txt (89%)\n(base) Julian@Julians-MacBook lake-model-paleo % git push\nEnumerating objects: 23, done.\nCounting objects: 100% (23/23), done.\nDelta compression using up to 8 threads\nCompressing objects: 100% (12/12), done.\nWriting objects: 100% (12/12), 233.15 KiB | 6.86 MiB/s, done.\nTotal 12 (delta 5), reused 0 (delta 0)\nremote: Resolving deltas: 100% (5/5), completed with 5 local objects.    \nTo https://github.com/geo-jules-cross/lake-model-paleo.git\n   98eae96..40966f5  master -> master\n(base) Julian@Julians-MacBook lake-model-paleo % ",
-			"settings":
-			{
-				"buffer_size": 1796,
+				"buffer_size": 49,
 				"line_ending": "Unix",
 				"name": "Login Shell",
 				"scratch": true
@@ -127,25 +118,28 @@
 	],
 	"file_history":
 	[
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_sublimation.m",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_geometry.m",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_fluxes.m",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_melt.m",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_noRIS_LH.txt",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_noRIS_LF.txt",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_noRIS_LB.txt",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_LF.txt",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_LH.txt",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_LB.txt",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/lake_level_paleo.m",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_input_flags.m",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_sublimation.m",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/S_data_glw.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/S_data_LB.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/S_data_4C_LB.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/S_data_4C_LF.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/S_data_LF.txt",
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/lake_level_paleo.m",
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_input_flags.m",
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_melt.m",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/Q_glacier_min_LB.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/S_data_4C_LH.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-annual/lake_level_annual.m",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/sublimation-model/sublimation_model.m",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/Q_glacier_min_LH.txt",
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_geometry.m",
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_LH.txt",
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_LF.txt",
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_LB.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_min_FH.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_min_FHB.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_h_data_min_Fr_Hoare_Basin.txt",
@@ -251,10 +245,7 @@
 		"/Z/Antarctica_Julian/icemelt-cross/input/tv_landcover_met.txt",
 		"/Z/Antarctica_Julian/icemelt-cross/input/T_avg_cliff.txt",
 		"/Z/Antarctica_Julian/icemelt-cross/input/T_avg_all.txt",
-		"/Z/Antarctica_Julian/micromet-verisons/micromet_aw_20180827/MMbatch_all_sites/snowmodel.par",
-		"/Z/Antarctica_Julian/micromet-verisons/micromet_aw_20180827/MMbatch_all_sites/MM_sim.sh",
-		"/Z/Antarctica_Julian/icemelt-cross/input/.gitkeep",
-		"/C/Users/jucross/Documents/MDV-Lakes-Thesis/lake-model/DATA/A_data_LF.txt"
+		"/Z/Antarctica_Julian/micromet-verisons/micromet_aw_20180827/MMbatch_all_sites/snowmodel.par"
 	],
 	"find":
 	{
@@ -309,7 +300,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -318,109 +309,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1140,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								391,
-								391
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content"
-							],
-							"syntax": "Packages/Matlab/Matlab.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "lake_level_paleo.m",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9968,
+						"buffer_size": 1163,
 						"regions":
 						{
 						},
@@ -451,26 +340,26 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
@@ -481,35 +370,33 @@
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content"
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
 							],
-							"syntax": "Packages/Matlab/Matlab.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Matlab/Matlab.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -525,19 +412,19 @@
 			"sheets":
 			[
 				{
-					"buffer": 2,
+					"buffer": 1,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1796,
+						"buffer_size": 49,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1796,
-								1796
+								49,
+								49
 							]
 						],
 						"settings":
@@ -568,7 +455,7 @@
 							],
 							"scroll_past_end": true,
 							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 4,
+							"tab_size": 2,
 							"terminus.highlight_counter": 9,
 							"terminus_view": true,
 							"terminus_view.args":
@@ -603,12 +490,12 @@
 							"terminus_view.natural_keyboard": true,
 							"terminus_view.panel_name": null,
 							"terminus_view.tag": null,
-							"terminus_view.viewport_y": 14.0,
+							"terminus_view.viewport_y": 0.0,
 							"translate_tabs_to_spaces": true,
 							"word_wrap": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 14.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

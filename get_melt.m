@@ -17,8 +17,8 @@ function [] = get_melt
 %             runDate='RIS_Scenarios/20201015_ris-min_minus-0c/';
 %             runname= 'basin-ris-min_minus-0c.mat';
             
-            runDate='RIS_Scenarios/20201015_ris-min_minus-4c/';
-            runname= 'basin-ris-min_minus-4c.mat';
+            runDate='RIS_Scenarios/20210129_min-ris_-4c_0pt3alb/';
+            runname= 'basin-min-ris_-4c_0pt3alb.mat';
     end
     % Max Scenario
     if(flags.GLW_scenario == 1)
@@ -58,9 +58,6 @@ function [] = get_melt
         for b=1:36
             for y=1:18
                 doB = find(basinkey == basinOrder(b));
-                % if (basinOrder(b) == 33 || basinOrder(b) == 34 || basinOrder(b) >= 41 && basinOrder(b) <= 73 || basinOrder(b) == 90)
-                %     GLWYrVol(y,b) = modelSmVol(y,doB);
-                %
                 % Bonney
                 if (basinOrder(b) <= 29)
                     LBYrVol(y,b) = modelSmVol(y,doB);
@@ -70,6 +67,10 @@ function [] = get_melt
                 % Fryxell
                 elseif(basinOrder(b) >= 43 && basinOrder(b) <= 90)
                     LFYrVol(y,b) = modelSmVol(y,doB);
+                % Fryxell-Hoare Basin
+                % elseif (basinOrder(b) >= 33 || basinOrder(b) <= 90)
+                %     LFYrVol(y,b) = modelSmVol(y,doB);
+                %
                 end
             end
         end

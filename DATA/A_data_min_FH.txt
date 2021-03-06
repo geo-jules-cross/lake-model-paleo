@@ -3,6 +3,7 @@
 %  orthometric heights
 %  based on local datum (WGS84 -56.3 m)
 %  Depth h (m)    Area A (m^2)
+93.000	37019648
 95.180	40762448
 95.280	40817960
 95.380	40870980

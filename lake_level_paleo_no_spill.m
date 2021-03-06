@@ -33,54 +33,28 @@ clear ;
 % dt      = time step
 % t_vec   = times at which lake level is calculated
 
-times = get_times;
+    times = get_times;
 
 % separate individual components of structure "times"
-t_0     = times.t_0;
-t_end   = times.t_end;
-n_steps = times.n_steps;
-dt      = times.dt;
-t_vec   = times.t_vec;
+    t_0     = times.t_0;
+    t_end   = times.t_end;
+    n_steps = times.n_steps;
+    dt      = times.dt;
+    t_vec   = times.t_vec;
 
 % Set up structure "flags" for reading in flux time series,
 % or generating simple time series in the code
 %
-flags = get_input_flags;
-%
+    flags = get_input_flags;
+
 % Check melt flag and rebuild input files
-if(flags.melt == 1)
-  get_melt;
-end
-if(flags.sublimation == 1)
-  get_sublimation;
-end
-%
-% set spill-over points (in m orthometric height)
-FH_spillpoint  = 95.1;
-HB_spillpoint  = 156.4;
-%
-% Start loop through selected basins (set in get_input_flags)
-switch flags.basin
-    case {1, 2, 3}
-        basinloop = 1;
-    case 0
-        basinloop = [3, 2, 1];
-end
-%
-basin_name = ["Lake Bonney", "Lake Hoare", "Lake Fryxell"];
-%
-% Lake basin loop
-for basin = basinloop
-%
-    disp(basin_name(basin));
-%
-% re-initialize basin flag
-    flags.basin = basin;
-%
-% Initialize spill-over case
-    spill_case(basin,1) = 0;
-%
-%
+    if(flags.melt == 1)
+      get_melt;
+    end
+    if(flags.sublimation == 1)
+      get_sublimation;
+    end
+
 % Set up structure "fluxes" with input and output histories at times t_vec
 % -----------------------------------------------------------------------
 %
@@ -92,14 +66,15 @@ for basin = basinloop
 % S = sublimation   (m yr^-1 w.e.)
 % E = evaporation   (m yr^-1 w.e.)
 %
-%
     fluxes = get_fluxes(times,flags);
 %
 % extract types of input from structure "fluxes" by type 
-    Q_glacier = fluxes.Q_glacier;
-    s_offset = 0;
-    S = fluxes.S + s_offset;
 %
+    s_offset = 0;
+%
+    Q_glacier = fluxes.Q_glacier;
+    S = fluxes.S + s_offset;
+
 % Set up structure "geometry" with lake hypsometry
 %    h_0              - initial lake elevation
 %    A_data( h_data ) - hypsometry data for lake basin
@@ -121,12 +96,6 @@ for basin = basinloop
     h_cutoff  = geometry.h_cutoff;
     it_max    = geometry.it_max;
 %
-% Save variables to lake structure
-    lake(basin).h_nodes = h_nodes;
-    lake(basin).A_nodes = A_nodes;
-    lake(basin).V_nodes = V_nodes;
-    lake(basin).t_vec   = times.t_vec;
-%
 %
 %---------------------------------------------------------------
 % Is there an analytical solution? In this context, that means
@@ -143,7 +112,8 @@ for basin = basinloop
 %
 % get "analytical" solution
 % if A(h) is not linear. h_ss is returned as h_ss = nan
-    [ t_analytical, h_real, h_ss ] = t_anlyt( times, geometry, fluxes );
+  [ t_analytical, h_real, h_ss ] = t_anlyt( times, geometry, fluxes );
+%
 %
 %
 %---------------------------------------
@@ -153,9 +123,9 @@ for basin = basinloop
 %  initialization
 %
 %   set up vectors to store results h(t), A(t), and V(t)
-    h = nan(1,n_steps+1);
-    A = h;
-    V = h;
+     h = nan(1,n_steps+1);
+     A = h;
+     V = h;
 %
 %
 % Combine all the inflow terms and all the lake-surface climate terms
@@ -166,102 +136,40 @@ for basin = basinloop
     climate_new = -S(1);
 %
 % Initialize lake-surface elevation, lake area, and lake volume at t_start
-    h_new = h_0;
-    A_new = interp1(h_nodes, A_nodes, h_new);
-    V_new = interp1(h_nodes, V_nodes, h_new);
+     h_new = h_0;
+     A_new = interp1(h_nodes, A_nodes, h_new );
+     V_new = interp1(h_nodes, V_nodes, h_new );
 %
 % Put initial state into time-series vectors h(t), A(t), and V(t)
-    h(1)  = h_new;
-    A(1)  = A_new;
-    V(1)  = V_new;
+     h(1)  = h_new;
+     A(1)  = A_new;
+     V(1)  = V_new;
 %
 %
 % Start time stepping here
 % ------------------------
-    for j = 1:n_steps
+     for j = 1:n_steps
     %
-        disp(['     Time step  ', num2str(j)]);
+       disp(['Time step  ', num2str(j)]);
     %
     % initialize iteration counter
     %
-        j_iter = 0;
+       j_iter = 0;
     %
     %
     % At first iteration, use an outrageously large estimate for
     % h_prev_iter (surface height at previous iteration) in order 
     % to get into the j_iter loop (there was no zeroth iteration) 
-        h_prev_iter = 99999;
+       h_prev_iter = 99999;
     %
     % move lake solution from previous time step into "old" variables
-        h_old = h_new;
-        A_old = A_new;
-        V_old = V_new;
-    %
-    %
-    % Check if lake spill-over happens and which case
-        if j > 1
-            if (basin == 3)
-                if (h_old > FH_spillpoint-1)
-                    % Lake Fryxell -> Lake Hoare
-                    spill_case(basin,j) = 1;
-                    %spill_case(basin,j) = 5; % just for now
-                else
-                    % reset to three separate lakes
-                    spill_case(basin,j) = 0;
-                end
-            elseif (basin == 2)
-                if (h_old > FH_spillpoint-1) && (lake(3).h(j-1) > FH_spillpoint-1)
-                    % Lake Hoare + Lake Fryxell
-                    spill_case(basin,j) = 5;
-                elseif (lake(3).h(j-1) > FH_spillpoint-1) 
-                    % Lake Fryxell -> Lake Hoare
-                    spill_case(basin,j) = 1;
-                    %spill_case(basin,j) = 5; % just for now
-                elseif (h_old > HB_spillpoint-1)
-                    % Lake Hoare -> Lake Bonney
-                    spill_case(basin,j) = 3;
-                else
-                    % reset to three separate lakes
-                    spill_case(basin,j) = 0;
-                end
-            elseif (basin == 1)
-                if (h_old > FH_spillpoint-1) && (lake(2).h(j-1) > HB_spillpoint-1) && (lake(3).h(j-1) > HB_spillpoint-1)
-                    % Lake Bonney + Lake Hoare + Lake Fryxell
-                    spill_case(basin,j) = 6;
-                elseif (lake(2).h(j-1) > HB_spillpoint-1)
-                    % Lake Hoare -> Lake Bonney
-                    spill_case(basin,j) = 3; 
-                elseif (h_old > HB_spillpoint-1)
-                    % Lake Bonney -> Lake Hoare 
-                    spill_case(basin,j) = 4;
-                else
-                    % reset to three separate lakes
-                    spill_case(basin,j) = 0;
-                end
-            end
-        end
-    %
-    % update fluxes and geometry
-        if (j>1) && (spill_case(basin,j) ~= spill_case(basin,j-1))
-            [fluxes, geometry] = update_fluxes(spill_case(basin,j), flags, fluxes, geometry, times);
-        end
-    %
-        Q_glacier = fluxes.Q_glacier;
-        S         = fluxes.S + s_offset;
-        h_0       = geometry.h_0;
-        h_data    = geometry.h_data;
-        A_data    = geometry.A_data;
-        dh_nodes  = geometry.dh_nodes;
-        N_h_nodes = geometry.N_h_nodes;
-        h_nodes   = geometry.h_nodes;
-        A_nodes   = geometry.A_nodes;
-        V_nodes   = geometry.V_nodes;
-        h_cutoff  = geometry.h_cutoff;
-        it_max    = geometry.it_max;
+       h_old = h_new;
+       A_old = A_new;
+       V_old = V_new;
     %
     % move inflows and climate into "old" variables
-        inflows_old = inflows_new;
-        climate_old = climate_new;
+       inflows_old = inflows_new;
+       climate_old = climate_new;
     %
     % get correct inflows and climate for time t+dt
         inflows_new = Q_glacier(j);
@@ -275,73 +183,50 @@ for basin = basinloop
     % while successively updating A_new(t+dt)
     %
         while ( abs(h_new - h_prev_iter) > h_cutoff )   
-        %
-        % update iteration number
-            j_iter = j_iter+1;
-            %
-            disp(['         Iteration  ', num2str(j_iter)] );
-        %
-        %
-        %           dV = 0.5*( inflows_old + inflows_new ...
-        %                    + climate_old*A_old + climate_new*A_new ) * dt;
+      %
+      % update iteration number
+          j_iter = j_iter+1;
+          %
+          disp(['      Iteration  ', num2str(j_iter)] );
+      %
+      %
+%           dV = 0.5*( inflows_old + inflows_new ...
+%                    + climate_old*A_old + climate_new*A_new ) * dt;
            
-            dV = (inflows_new + climate_new*A_new ) * dt;
-        %
-        % first estimate of new lake volume
-            % max(0, ...) prevents lake volume from ever going negative 
-            V_new = max(0, V_old + dV);
-        %
-        %
-        % save lake surface at previous iteration as h_prev_iter
-            h_prev_iter = h_new;
-        %
-        %
-        % get corresponding new area and surface elevation
-            A_new = interp1( V_nodes, A_nodes, V_new);
-            h_new = interp1( V_nodes, h_nodes, V_new );
-        %  
-        %
-        % test for convergence failure
-            if(j_iter >= it_max)
-                disp(['         Iterations did not converge at time step ',num2str(j)]);
-                break
-            end  % if(j_iter > itmax)
-        %
+           dV = (inflows_new + climate_new*A_new ) * dt;
+      %
+      % first estimate of new lake volume
+           % max(0, ...) prevents lake volume from ever going negative 
+          V_new = max(0, V_old + dV);
+      %
+      %
+      % save lake surface at previous iteration as h_prev_iter
+          h_prev_iter = h_new;
+      %
+      %
+      % get corresponding new area and surface elevation
+          A_new = interp1( V_nodes, A_nodes, V_new);
+          h_new = interp1( V_nodes, h_nodes, V_new );
+      %  
+      %
+      % test for convergence failure
+          if(j_iter >= it_max)
+           %
+           disp(['Iterations did not converge at time step ',num2str(j)]);
+           break
+          end  % if(j_iter > itmax)
+      %
         end    % while abs(h_new - h_old) > h_cutoff
     %
     %
     % iteration has converged and we now have V_new at t+dt
     % save h, A, and V at time t+dt
-        h(j+1) = h_new;
-        A(j+1) = A_new;
-        V(j+1) = V_new;
+       h(j+1) = h_new;
+       A(j+1) = A_new;
+       V(j+1) = V_new;
     %
     %
-    % Save results to lake structure
-        lake(basin).Q_glacier(j+1) = Q_glacier(j+1);
-        lake(basin).S(j+1) = S(j+1);
-        lake(basin).h(j+1) = h(j+1);
-        lake(basin).A(j+1) = A(j+1);
-        lake(basin).V(j+1) = V(j+1);
-    %
-    end  %  for j = 1:n_steps
-
-    % Save all lake results to new structure
-    lake.basin(b).h_nodes(:) = h_nodes;
-    lake.basin(b).A_nodes(:) = A_nodes;
-    lake.basin(b).V_nodes(:) = V_nodes;
-    
-    lake.Q_glacier(b,:) = Q_glacier;
-    %lake.h.glacier(b,:) = h;
-    lake.h = h;
-    lake.A(b,:) = A;
-    lake.V(b,:) = V;
-    lake.dV(b,:)= deltaV;
-    lake.S(b,:) = S;
-
-    lake.t_vec   = times.t_vec;
-
-end % for basin = 1:basinloop
+    end  %  for j = 1:n_steps 
 
 save('DATA/lake.mat', 'lake');
 %
