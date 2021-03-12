@@ -220,6 +220,7 @@ for basin = basinloop
                 elseif (h_old < FH_spillpoint-1) && (lake(3).h(j) > FH_spillpoint-1) 
                     % Lake Fryxell -> Lake Hoare
                     spill_case(basin,j) = 1;
+                    %spill_case(basin,j) = 5;
                 elseif (h_old > HB_spillpoint-1)
                     % Lake Hoare -> Lake Bonney
                     spill_case(basin,j) = 3;

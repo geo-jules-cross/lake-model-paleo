@@ -95,7 +95,8 @@ function [fluxes, geometry] = update_fluxes(spill_case, flags, fluxes, geometry,
             if(scenario == 0) % Min Scenario
                 if( basin == 2)
                     Q_glacier_data = Q_glacier_min_LH(:,2) + Q_glacier_min_LF(:,2);
-                    S_data = S_data_LH(:,2);
+                    %S_data = S_data_LH(:,2);
+                    S_data = (S_data_LF(:,2) + S_data_LF(:,2))/2;
                     h_data = A_data_min_LH(:,1);
                     A_data = A_data_min_LH(:,2);
                 elseif( basin == 3)
@@ -207,14 +208,14 @@ function [fluxes, geometry] = update_fluxes(spill_case, flags, fluxes, geometry,
             if(scenario == 0) % Min Scenario
                 if( basin == 2) || ( basin == 3)
                     Q_glacier_data = Q_glacier_min_LH(:,2) + Q_glacier_min_LF(:,2);
-                    S_data = (S_data_LF(:,2) + S_data_LF(:,2))/2;
+                    S_data = (S_data_LH(:,2) + S_data_LF(:,2))/2;
                     h_data = A_data_min_FH(:,1);
                     A_data = A_data_min_FH(:,2);
                 end
             elseif(scenario == 2) % No RIS Scenario
                 if( basin == 2) || ( basin == 3)
                     Q_glacier_data = Q_glacier_noRIS_LH(:,2) + Q_glacier_noRIS_LF(:,2);
-                    S_data = (S_data_LF(:,2) + S_data_LF(:,2))/2;
+                    S_data = (S_data_LH(:,2) + S_data_LF(:,2))/2;
                     h_data = A_data_noRIS_FH(:,1);
                     A_data = A_data_noRIS_FH(:,2);
                     %%% THIS HYPSOMETRY DOES NOT EXIST!! %%%
