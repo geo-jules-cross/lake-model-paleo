@@ -207,17 +207,17 @@ for basin = basinloop
             if (basin == 3)
                 if (h_old > FH_spillpoint-1)
                     % Lake Fryxell -> Lake Hoare
-                    %spill_case(basin,j) = 1;
-                    spill_case(basin,j) = 5;
+                    spill_case(basin,j) = 1;
+                    %spill_case(basin,j) = 5;
                 else
                     % reset to three separate lakes
                     spill_case(basin,j) = 0;
                 end
             elseif (basin == 2)
-                if (h_old > FH_spillpoint-1) && (lake(3).h(j) > FH_spillpoint-1)
+                if (h_old > FH_spillpoint-1) && (lake(3).h(j+1) > FH_spillpoint-1)
                     % Lake Hoare + Lake Fryxell
                     spill_case(basin,j) = 5;
-                elseif (h_old < FH_spillpoint-1) && (lake(3).h(j) > FH_spillpoint-1) 
+                elseif (h_old < FH_spillpoint-1) && (lake(3).h(j+1) > FH_spillpoint-1) 
                     % Lake Fryxell -> Lake Hoare
                     spill_case(basin,j) = 1;
                     %spill_case(basin,j) = 5;
@@ -229,10 +229,10 @@ for basin = basinloop
                     spill_case(basin,j) = 0;
                 end
             elseif (basin == 1)
-                if (h_old > FH_spillpoint-1) && (lake(2).h(j) > HB_spillpoint-1) && (lake(3).h(j) > HB_spillpoint-1)
+                if (h_old > FH_spillpoint-1) && (lake(2).h(j+1) > HB_spillpoint-1) && (lake(3).h(j+1) > HB_spillpoint-1)
                     % Lake Bonney + Lake Hoare + Lake Fryxell
                     spill_case(basin,j) = 6;
-                elseif (lake(2).h(j) > HB_spillpoint-1)
+                elseif (lake(2).h(j+1) > HB_spillpoint-1)
                     % Lake Hoare -> Lake Bonney
                     spill_case(basin,j) = 3; 
                 elseif (h_old > HB_spillpoint-1)
@@ -286,8 +286,8 @@ for basin = basinloop
             disp(['         Iteration  ', num2str(j_iter)] );
         %
         %
-        %           dV = 0.5*( inflows_old + inflows_new ...
-        %                    + climate_old*A_old + climate_new*A_new ) * dt;
+            % dV = 0.5*( inflows_old + inflows_new ...
+            %     + climate_old*A_old + climate_new*A_new ) * dt;
            
             dV = (inflows_new + climate_new*A_new ) * dt;
         %
@@ -301,7 +301,7 @@ for basin = basinloop
         %
         %
         % get corresponding new area and surface elevation
-            A_new = interp1( V_nodes, A_nodes, V_new);
+            A_new = interp1( V_nodes, A_nodes, V_new );
             h_new = interp1( V_nodes, h_nodes, V_new );
         %  
         %

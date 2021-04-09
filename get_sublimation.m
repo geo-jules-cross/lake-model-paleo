@@ -13,7 +13,10 @@ function [] = get_sublimation
     
     % Adjustments
 %     Temp_adj = -4.0;
-    Temp_adj = 0;
+    Temp_adj = 0.0;
+
+%     Wind_adj = 0.8;
+    Wind_adj = 1.0;
 
     % Lake Hoare Pa
     pafilename=['DATA/', 'hoe_pa.bin'];
@@ -81,8 +84,11 @@ function [] = get_sublimation
             % Save to met variables
             TairC    = MicroMet(:,1);       %  Tair 1
             rh       = MicroMet(:,2);       %  rh 2
-            windspd  = MicroMet(:,3);       %  windsp 3    
-            Tair(:)  = TairC(:) + Tf + Temp_adj;       % Convert from C to K
+            windspd  = MicroMet(:,3);       %  windsp 3
+
+            % Make met adjustments
+            Tair(:)  = TairC(:) + Tf + Temp_adj;       % Also convert from C to K
+            windspd(:) = windspd(:) * Wind_adj;
             
             % Look up correct surface roughness length (m)
             if l == 1        % Bonney
@@ -107,6 +113,10 @@ function [] = get_sublimation
 
             % Start calcualting subliamtion at each time-step
             for itime = 1:nrows;
+
+                if windspd(itime) < 1
+                    windspd(itime) = 1;
+                end  
                 
                 % Coeffs for saturation vapor pressure over water (Buck 1981)
                 % AGF Note: temperatures for Buck's equations are in deg C,

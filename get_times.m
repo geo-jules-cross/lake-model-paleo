@@ -9,14 +9,14 @@ function [times] = get_times
 % t_end   = end time    
 % nsteps  = number of time intervals between t_0 and t_end
 %
-    t_0     = -22000;
-    t_end   = -10000;
-    n_steps = 12000;
-%
 %     t_0     = -22000;
-%     t_end   = -21700;
-%     n_steps = 300;  
+%     t_end   = -10000;
+%     n_steps = 12000;
 %
+    t_0     = -22000;
+    t_end   = -21500;
+    n_steps = 500;  
+
 % set up time step and vector of times for calculations
     dt = (t_end - t_0) / n_steps;
     t_vec = t_0 + [0: n_steps] * dt;

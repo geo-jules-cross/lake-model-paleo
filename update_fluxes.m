@@ -95,27 +95,26 @@ function [fluxes, geometry] = update_fluxes(spill_case, flags, fluxes, geometry,
             if(scenario == 0) % Min Scenario
                 if( basin == 2)
                     Q_glacier_data = Q_glacier_min_LH(:,2) + Q_glacier_min_LF(:,2);
-                    %S_data = S_data_LH(:,2);
                     S_data = (S_data_LF(:,2) + S_data_LF(:,2))/2;
                     h_data = A_data_min_LH(:,1);
                     A_data = A_data_min_LH(:,2);
                 elseif( basin == 3)
                     Q_glacier_data = zeros(1,n_steps+1);
                     S_data = zeros(1,n_steps+1);
-                    h_data = A_data_min_FH(:,1);
-                    A_data = A_data_min_FH(:,2);
+                    h_data = A_data_min_LF(:,1);
+                    A_data = A_data_min_LF(:,2);
                 end
             elseif(scenario == 2) % No RIS Scenario
                 if( basin == 2)
                     Q_glacier_data = Q_glacier_noRIS_LH(:,2) + Q_glacier_noRIS_LF(:,2);
                     S_data = S_data_LH(:,2);
-                    h_data = A_data_noRIS_FH(:,1);
-                    A_data = A_data_noRIS_FH(:,2);
+                    h_data = A_data_noRIS_LH(:,1);
+                    A_data = A_data_noRIS_LH(:,2);
                 elseif( basin == 3)
                     Q_glacier_data = zeros(1,n_steps+1);
                     S_data = zeros(1,n_steps+1);
-                    h_data = A_data_noRIS_FH(:,1);
-                    A_data = A_data_noRIS_FH(:,2);
+                    h_data = A_data_noRIS_LF(:,1);
+                    A_data = A_data_noRIS_LF(:,2);
                 end
             end
             %
@@ -218,7 +217,6 @@ function [fluxes, geometry] = update_fluxes(spill_case, flags, fluxes, geometry,
                     S_data = (S_data_LH(:,2) + S_data_LF(:,2))/2;
                     h_data = A_data_noRIS_FH(:,1);
                     A_data = A_data_noRIS_FH(:,2);
-                    %%% THIS HYPSOMETRY DOES NOT EXIST!! %%%
                 end
             end
             %
@@ -242,7 +240,6 @@ function [fluxes, geometry] = update_fluxes(spill_case, flags, fluxes, geometry,
                     S_data = (S_data_LB(:,2) + S_data_LH(:,2) + S_data_LF(:,2))/3;
                     h_data = A_data_noRIS_FHB(:,1);
                     A_data = A_data_noRIS_FHB(:,2);
-                    %%% THIS HYPSOMETRY DOES NOT EXIST!! %%%
                 end
             end
             %
