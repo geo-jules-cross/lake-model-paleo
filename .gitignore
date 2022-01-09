@@ -1,0 +1,12 @@
+# list of files to ignore by git
+
+# exclude these files
+desktop.ini
+.DS_Store
+lake-model-paleo.sublime-project
+lake-model-paleo.sublime-workspace
+
+# exclude these directories
+blob_storage
+
+# except these files
