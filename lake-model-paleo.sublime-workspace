@@ -23,25 +23,15 @@
 			"file": "lake_level_paleo.m",
 			"settings":
 			{
-				"buffer_size": 13583,
-				"encoding": "UTF-8",
+				"buffer_size": 13759,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "update_fluxes.m",
+			"contents": "(base) Julian@Julians-MacBook lake-model-paleo % \n(base) Julian@Julians-MacBook lake-model-paleo % ",
 			"settings":
 			{
-				"buffer_size": 12302,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "(base) Julian@Julians-MacBook lake-model-paleo % \n(base) Julian@Julians-MacBook lake-model-paleo % \n(base) Julian@Julians-MacBook lake-model-paleo % ",
-			"settings":
-			{
-				"buffer_size": 149,
+				"buffer_size": 99,
 				"line_ending": "Unix",
 				"name": "Login Shell",
 				"scratch": true
@@ -128,10 +118,20 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo"
+		"/Users/Julian/Documents/_Projects/MDV-Lakes-Thesis/lake-model-paleo"
 	],
 	"file_history":
 	[
+		"/Users/Julian/Documents/_Projects/MDV-Lakes-Thesis/lake-model-paleo/lake_level_paleo_no_spill.m",
+		"/Users/Julian/Documents/_Projects/MDV-Lakes-Thesis/lake-model-paleo/get_geometry.m",
+		"/Users/Julian/Documents/_Projects/MDV-Lakes-Thesis/lake-model-paleo/lake_level_paleo.m",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_fluxes.m",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_input_flags.m",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_melt.m",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/update_fluxes.m",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_times.m",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_sublimation.m",
+		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/lake_level_paleo.m",
 		"/Volumes/antarctica/Antarctica_Bryce/Paleolakes_Project/melt-model/run-plots-analysis/compare_runs_paleo_JC_20210406.m",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_min_FH.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_min_LH_test.txt",
@@ -139,8 +139,6 @@
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_min_LH.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_noRIS_FH.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_min.txt",
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/update_fluxes.m",
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/lake_level_paleo.m",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_noRIS_FHB.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_noRIS_LB.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_noRIS_LF.txt",
@@ -150,15 +148,11 @@
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/lake_level_paleo_no_spill.m",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/README.md",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/README.html",
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_input_flags.m",
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_fluxes.m",
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_melt.m",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_geometry.m",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/update_spill.m",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_LF.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_LH.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_data_LB.txt",
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_sublimation.m",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/S_data_glw.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/S_data_LB.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/S_data_4C_LB.txt",
@@ -173,7 +167,6 @@
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/t_anlyt.m",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_h_data_min_TV.txt",
 		"/Users/Julian/Desktop/for_AB/hourly_stream_data_Matlab_script/parse_stream_data_hourly.m",
-		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/get_times.m",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/Q_glacier_min_LF.txt",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/spatial-analysis/data-gis/terrain/lidar_2015/tv_2015_dem_2m.tfw",
 		"/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/lake-model-paleo/DATA/A_h_data_min.txt",
@@ -256,10 +249,7 @@
 		"/Users/Julian/Desktop/namelist.input",
 		"/Volumes/antarctica/Antarctica_Julian/icemelt-cross/run_all_cluster.sh",
 		"/Z/Antarctica_Julian/icemelt-cross/run_albedo_cluster.sh",
-		"/Users/Julian/Documents/!Work/Resume/markdown-Resume/cv/cv.md",
-		"/Z/Antarctica_Julian/icemelt-cross/input/hoe_pa.bin",
-		"/C/Users/jucross/Documents/MDV-Lakes-Thesis/albedo-model/data/9515_alb.TAR",
-		"/C/Users/jucross/Documents/MDV-Lakes-Thesis/albedo-model/data/model-inputs/MODIS_alb.TAR"
+		"/Users/Julian/Documents/!Work/Resume/markdown-Resume/cv/cv.md"
 	],
 	"find":
 	{
@@ -310,32 +300,34 @@
 			"years"
 		],
 		"reverse": false,
+		"scrollbar_highlights": true,
 		"show_context": true,
 		"use_buffer2": true,
+		"use_gitignore": true,
 		"whole_word": false,
 		"wrap": true
 	},
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
 					"file": "lake_level_paleo.m",
-					"semi_transient": false,
+					"selected": true,
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 13583,
+						"buffer_size": 13759,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9169,
-								9169
+								0,
+								0
 							]
 						],
 						"settings":
@@ -358,51 +350,51 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
@@ -423,132 +415,29 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "update_fluxes.m",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12302,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3478,
-								3478
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content"
-							],
-							"syntax": "Packages/Matlab/Matlab.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
+					"stack_multiselect": false,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 0,
 			"sheets":
 			[
 				{
-					"buffer": 2,
+					"buffer": 1,
+					"selected": true,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 149,
+						"buffer_size": 99,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								149,
-								149
+								99,
+								99
 							]
 						],
 						"settings":
@@ -612,14 +501,15 @@
 							"terminus_view.natural_keyboard": true,
 							"terminus_view.panel_name": null,
 							"terminus_view.tag": null,
-							"terminus_view.viewport_y": 26.0,
+							"terminus_view.viewport_y": 13.0,
 							"word_wrap": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 26.0,
+						"translation.y": 13.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
+					"stack_multiselect": false,
 					"type": "text"
 				}
 			]
@@ -653,7 +543,7 @@
 		"cols":
 		[
 			0.0,
-			0.499709328156,
+			0.561999263696,
 			1.0
 		],
 		"rows":

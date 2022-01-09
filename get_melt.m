@@ -10,25 +10,24 @@ function [] = get_melt
     flags = get_input_flags;
 
 % Output Directory
-    outDirectory='/Users/Julian/Documents/!School/PSU GEOG MS/MDV-Lakes-Thesis/melt-model/processed-data/';
+    outDirectory='/Users/Julian/Documents/_Projects/MDV-Lakes-Thesis/melt-model/processed-data/';
 
     % Min Scenario
     if(flags.GLW_scenario == 0)
-%             runDate='RIS_Scenarios/20201015_ris-min_minus-0c/';
-%             runname= 'basin-ris-min_minus-0c.mat';
-            
             runDate='RIS_Scenarios/20210129_min-ris_-4c_0pt3alb/';
             runname= 'basin-min-ris_-4c_0pt3alb.mat';
-    end
     % Max Scenario
-    if(flags.GLW_scenario == 1)
+    elseif(flags.GLW_scenario == 1)
             runDate='';
             runname= '';
-    end
     % No RIS Scenario
-    if(flags.GLW_scenario == 2)
+    elseif(flags.GLW_scenario == 2)
             runDate='RIS_Scenarios/20201214_NORIS/';
             runname= 'basin-no-ris_min-4c.mat';
+    % Future
+    elseif(flags.GLW_scenario == 3)
+            runDate='20210207_BASINS_M4/';
+            runname= 'basin-multi-adj-ekh-alb-2007.mat';
     end
 
     path2output=[outDirectory runDate runname];
@@ -66,11 +65,7 @@ function [] = get_melt
                     LHYrVol(y,b) = modelSmVol(y,doB);
                 % Fryxell
                 elseif(basinOrder(b) >= 43 && basinOrder(b) <= 90)
-                    LFYrVol(y,b) = modelSmVol(y,doB);
-                % Fryxell-Hoare Basin
-                % elseif (basinOrder(b) >= 33 || basinOrder(b) <= 90)
-                %     LFYrVol(y,b) = modelSmVol(y,doB);
-                %
+                    LFYrVol(y,b) = modelSmVol(y,doB) + 500000;
                 end
             end
         end
@@ -151,9 +146,66 @@ function [] = get_melt
         fileList = {'DATA/Q_glacier_noRIS_LB.txt', 'DATA/Q_glacier_noRIS_LH.txt', 'DATA/Q_glacier_noRIS_LF.txt'};
 
     end % No RIS Scenario
+
+    % Future
+    if(flags.GLW_scenario == 3)
+        % Define basin order
+        basinOrder=[10,...
+        11,15,16,19,21,...
+        24,25,26,29,31,...
+        32,33,34,36,37,...
+        38,39,41,42,43,...
+        44,45,50,61,62,...
+        63,64,65,66,71,...
+        72,74,81,82];
+        for b=1:35
+            for y=1:18
+                doB = find(basinkey == basinOrder(b));
+                % Bonney
+                if (basinOrder(b) <= 29)
+                    LBYrVol(y,b) = modelSmVol(y,doB);
+                % Hoare
+                elseif (basinOrder(b) == 33 || basinOrder(b) == 34 || basinOrder(b) == 41 || basinOrder(b) == 42)
+                    LHYrVol(y,b) = modelSmVol(y,doB);
+                % Fryxell
+                elseif(basinOrder(b) >= 43 && basinOrder(b) <= 73)
+                    LFYrVol(y,b) = modelSmVol(y,doB);
+                end
+            end
+        end
+        
+        % Sum lake arrays
+        lakeYrVol = [sum(LBYrVol,2) sum(LHYrVol,2) sum(LFYrVol,2)];
+        
+        % Remove 1995-1996
+        lakeYrVol = lakeYrVol(2:18,1:3);
+        
+        % Add subaqueous and snowmelt fluxes (m3/year)
+        for y = 1:17
+            % Bonney - subaqueous flux
+            Q_subaq_LB = 31390;
+            lakeYrVol(y,1) = lakeYrVol(y,1) + Q_subaq_LB;
+            % Hoare - subaqueous flux
+            Q_subaq_LH = 31755;
+            lakeYrVol(y,2) = lakeYrVol(y,2) + Q_subaq_LH;
+            % Fryxell - snowmelt flux
+            Q_snow_LF = 450000;
+            lakeYrVol(y,3) = lakeYrVol(y,3) + Q_snow_LF;
+        end
+        
+        % Output file
+        fileList = {'DATA/Q_glacier_future_LB.txt', 'DATA/Q_glacier_future_LH.txt', 'DATA/Q_glacier_future_LF.txt'};
+
+    end % Future Scenario
+
+% Average lake arrays
+    lakeAvgVol = mean(lakeYrVol);
     
 % Data output file
     outDirectory = '/DATA/';
+
+% series simulation type flag: all years = 0, 1996 to 2001 = 1, 2002 to 2013 = 2, average of all years = 3
+    series_flag = flags.series_flag;
 
 % Format and update input data files
     for f=1:length(fileList)
@@ -163,12 +215,53 @@ function [] = get_melt
         fprintf(fileID, '%s \n', '% load Q_glacier data');
         fprintf(fileID, '%s \n', '% time (years) Q_glacier (m^3 year^-1)');
         c = 1;
-        for yr=times.t_vec
-            fprintf(fileID, fmt, [yr lakeYrVol(c,f)]);
-            if c < 18
-                c = c + 1;
-            else
-                c = 1;
+        if(series_flag == 0)
+            for yr=times.t_vec
+                if c > 17
+                    c = 1;
+                else
+                    fprintf(fileID, fmt, [yr lakeYrVol(c,f)]);
+                    c = c + 1;
+                end
+            end
+        elseif(series_flag == 1)
+            j = 1;
+            for yr=times.t_vec
+                if c > 17
+                    if j < 6
+                        fprintf(fileID, fmt, [yr lakeYrVol(j,f)]);
+                        j = j + 1;
+                    else
+                        j = 1;
+                    end
+                else
+                    fprintf(fileID, fmt, [yr lakeYrVol(c,f)]);
+                    c = c + 1;
+                end
+            end
+        elseif(series_flag == 2)
+            j = 6;
+            for yr=times.t_vec
+                if c > 17
+                    if j < 18
+                        fprintf(fileID, fmt, [yr lakeYrVol(j,f)]);
+                        j = j + 1;
+                    else
+                        j = 6;
+                    end
+                else
+                    fprintf(fileID, fmt, [yr lakeYrVol(c,f)]);
+                    c = c + 1;
+                end
+            end
+        elseif(series_flag == 3)
+            for yr=times.t_vec
+                if c > 17
+                    c = 1;
+                else
+                    fprintf(fileID, fmt, [yr lakeAvgVol(f)]);
+                    c = c + 1;
+                end
             end
         end
         fmt = '%d \t \t %f';

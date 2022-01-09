@@ -3,25 +3,21 @@
 % Code originally by E. Waddington
 
 function [ flags ] = get_input_flags
-% set flags that tell main program whether to 
-%
-%     0 - use modeled meltwater inflow
-%     1 - use interpolated inflow
-
-    flags.Q_glacier_flag    = 0;
+% set flags that tell main program how to run simulation 
 %
 %     0 - Min RIS
-%     1 - Max RIS
-%	  2 - No RIS
+%	  1 - Max RIS
+%     2 - No RIS
 
     flags.GLW_scenario      = 0;  
 %
-%     0 - read flux histories from external files or 
-%     1 - generate time series in matlab function get_fluxes.m
-%
-    flags.P_flag         	= 0;    %  Precipitation
-    flags.S_flag         	= 0;    %  Sublimation
-    flags.E_flag         	= 0;    %  Evaporation
+%     0 - all years
+%     1 - 1996 to 2001
+%     2 - 2002 to 2013
+%     3 - average all years
+
+    flags.series_flag       = 3;
+
 %
 %     0 - read hypsometry data from external file or 
 %     1 - generate hypsometry data in matlab function get_geometry.m
@@ -37,14 +33,6 @@ function [ flags ] = get_input_flags
 %     1 - yes
 
     flags.sublimation		= 1;	% Rebuild sublimation
-%
-%	Determine which basin to run
-%     0 - all
-%     1 - bonney
-%     2 - hoare
-%     3 - fryxell
-%
-	flags.basin			 	= 0;	 % Basin to run 
 %
 %
 %  flags are returned in a structure called "flags"

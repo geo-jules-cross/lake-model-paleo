@@ -1,4 +1,0 @@
-% load P data (Precipitation)
-%  time (years)     P (m year^-1) 
-    1994            0
-    2013            0

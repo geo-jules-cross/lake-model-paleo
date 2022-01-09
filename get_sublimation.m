@@ -228,8 +228,20 @@ function [] = get_sublimation
 
     % Output file
     fileList = {'DATA/S_data_LB.txt', 'DATA/S_data_LH.txt', 'DATA/S_data_LF.txt'};
-
-
+    
+    % Remove 1995-1996
+    if(flags.GLW_scenario == 3)
+        lake(1).water_season = lake(1).water_season(2:18,:);
+        lake(2).water_season = lake(2).water_season(2:18,:);
+        lake(3).water_season = lake(3).water_season(2:18,:);
+    end
+    
+    % Calculate annual average
+    lakeAvgVol = [mean(lake(1).water_season(:,3)) mean(lake(2).water_season(:,3)) mean(lake(3).water_season(:,3))];
+    
+    % future simulation flag: all years = 0, 1996 to 2001 = 1, 2002 to 2013 = 2
+    series_flag = flags.series_flag;
+    
     % Format and update input data files
     for f=1:length(fileList)
         file = fileList{f};
@@ -238,12 +250,52 @@ function [] = get_sublimation
         fprintf(fileID, '%s \n', '% load S data (Sublimation from lakes)');
         fprintf(fileID, '%s \n', '%  time (years)     S (m year^-1) ');
         c = 1;
-        for yr=times.t_vec
-            fprintf(fileID, fmt, [yr lake(f).water_season(c,3)]);
-            if c < 18
+        if(series_flag == 0)
+            for yr=times.t_vec
+                if c > 17
+                    c = 1;
+                end
+                fprintf(fileID, fmt, [yr lake(f).water_season(c,3)]);
                 c = c + 1;
-            else
-                c = 1;
+            end
+        elseif(series_flag == 1)
+            j = 1;
+            for yr=times.t_vec
+                if c > 17
+                    if j < 6
+                        fprintf(fileID, fmt, [yr lake(f).water_season(j,3)]);
+                        j = j + 1;
+                    else
+                        j = 1;
+                    end
+                else
+                    fprintf(fileID, fmt, [yr lake(f).water_season(c,3)]);
+                    c = c + 1;
+                end
+            end
+        elseif(series_flag == 2)
+            j = 6;
+            for yr=times.t_vec
+                if c > 17
+                    if j < 18
+                        fprintf(fileID, fmt, [yr lake(f).water_season(j,3)]);
+                        j = j + 1;
+                    else
+                        j = 6;
+                    end
+                else
+                    fprintf(fileID, fmt, [yr lake(f).water_season(c,3)]);
+                    c = c + 1;
+                end
+            end
+        elseif(series_flag == 3)
+            for yr=times.t_vec
+                if c > 17
+                    c = 1;
+                else
+                    fprintf(fileID, fmt, [yr lakeAvgVol(f)]);
+                    c = c + 1;
+                end
             end
         end
         fmt = '%d \t \t %f';
