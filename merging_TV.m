@@ -1,4 +1,4 @@
-function [ all_data ] = merging_TV( times, inflow, outflow, hypsometry)
+function [ all_data ] = merging_TV( times, flags, inflow, outflow, hypsometry)
 
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
@@ -24,11 +24,11 @@ outflow_LB      = outflow.outflow_LB;
 h_0_LF          = hypsometry.h_0_LF;
 h_0_LH          = hypsometry.h_0_LH;
 h_0_LB          = hypsometry.h_0_LB;
-elev_LF         = hypsometry.elev_LF;
-elev_LH         = hypsometry.elev_LH;
-elev_LB         = hypsometry.elev_LB;
-elev_FH         = hypsometry.elev_FH;
-elev_FHB        = hypsometry.elev_FHB;
+% elev_LF         = hypsometry.elev_LF;
+% elev_LH         = hypsometry.elev_LH;
+% elev_LB         = hypsometry.elev_LB;
+% elev_FH         = hypsometry.elev_FH;
+% elev_FHB        = hypsometry.elev_FHB;
 area_LF         = hypsometry.area_LF;
 area_LH         = hypsometry.area_LH;
 area_LB         = hypsometry.area_LB;
@@ -141,6 +141,11 @@ for j = 1:n_steps
         outflow_new_LF = 0;
         inflow_old_LF = 0;
         outflow_old_LF = 0;
+        
+        % update hypsometry
+        spill_flag = 0;
+        hypsometry = get_hypsometry(flags, spill_flag);
+
     % Lake Hoare -> Lake Fryxell
     elseif (elev_new_LH > FH_spillpoint) & (elev_new_LF < FH_spillpoint)
         inflow_new_LB = inflow_old_LB;
@@ -151,6 +156,11 @@ for j = 1:n_steps
         outflow_old_LH = 0;
         inflow_new_LF = inflow_old_LH + inflow_old_LF;
         outflow_new_LF = outflow_old_LF;
+        
+        % update hypsometry
+        spill_flag = 0;
+        hypsometry = get_hypsometry(flags, spill_flag);
+
     % Lake Bonney -> Lake Hoare
     elseif (elev_new_LH < HB_spillpoint) & (elev_new_LB > HB_spillpoint)
         inflow_new_LB = 0;
@@ -161,6 +171,11 @@ for j = 1:n_steps
         outflow_new_LH = outflow_old_LH;
         inflow_new_LF = inflow_old_LF;
         outflow_new_LF = outflow_old_LF;
+        
+        % update hypsometry
+        spill_flag = 0;
+        hypsometry = get_hypsometry(flags, spill_flag);
+        
     % Lake Hoare + Lake Fryxell
     elseif (elev_new_LF > FH_spillpoint) & (elev_new_LH > FH_spillpoint) & (elev_new_LF < HB_spillpoint)
         inflow_new_LB = inflow_old_LB;
@@ -169,6 +184,11 @@ for j = 1:n_steps
         outflow_new_LH = (outflow_old_LH + outflow_old_LF)/2;
         inflow_new_LF = inflow_old_LH + inflow_old_LF;
         outflow_new_LF = (outflow_old_LH + outflow_old_LF)/2;
+        
+        % update hypsometry
+        spill_flag = 1;
+        hypsometry = get_hypsometry(flags, spill_flag);
+
     % Lake Hoare + Lake Fryxell -> Lake Bonney
     elseif (elev_new_LF > HB_spillpoint) & (elev_new_LB < HB_spillpoint) & (elev_new_LH > HB_spillpoint)
         inflow_new_LB = inflow_old_LB + inflow_old_LH + inflow_old_LF;
@@ -181,6 +201,11 @@ for j = 1:n_steps
         outflow_new_LF = 0;
         inflow_old_LF = 0;
         outflow_old_LF = 0;
+
+        % update hypsometry
+        spill_flag = 1;
+        hypsometry = get_hypsometry(flags, spill_flag);
+
     % Lake Bonney + Lake Hoare + Lake Fryxell
     elseif (elev_new_LB > HB_spillpoint) & (elev_new_LH > HB_spillpoint) & (elev_new_LF > HB_spillpoint)
         inflow_new_LB = inflow_old_LB + inflow_old_LH + inflow_old_LF;
@@ -189,6 +214,11 @@ for j = 1:n_steps
         outflow_new_LH = (outflow_old_LB + outflow_old_LH + outflow_old_LF)/3;
         inflow_new_LF = inflow_old_LB + inflow_old_LH + inflow_old_LF;
         outflow_new_LF = (outflow_old_LB + outflow_old_LH + outflow_old_LF)/3;
+        
+        % update hypsometry
+        spill_flag = 2;
+        hypsometry = get_hypsometry(flags, spill_flag);
+
     % Separate Lakes
     else
         inflow_new_LB = inflow_old_LB;
@@ -197,7 +227,34 @@ for j = 1:n_steps
         outflow_new_LH = outflow_old_LH;
         inflow_new_LF = inflow_old_LF;
         outflow_new_LF = outflow_old_LF;
+
+        % update hypsometry
+        %spill_flag = 0;
+        %hypsometry = get_hypsometry(flags, spill_flag);
+
     end
+
+    % unpack updated hypsometry structures
+    area_LF         = hypsometry.area_LF;
+    area_LH         = hypsometry.area_LH;
+    area_LB         = hypsometry.area_LB;
+    area_FH         = hypsometry.area_FH;
+    area_FHB        = hypsometry.area_FHB;
+    elev_nodes_LF   = hypsometry.elev_nodes_LF;
+    elev_nodes_LH   = hypsometry.elev_nodes_LH;
+    elev_nodes_LB   = hypsometry.elev_nodes_LB;
+    elev_nodes_FH   = hypsometry.elev_nodes_FH;
+    elev_nodes_FHB  = hypsometry.elev_nodes_FHB;
+    area_nodes_LF   = hypsometry.area_nodes_LF;
+    area_nodes_LH   = hypsometry.area_nodes_LH;
+    area_nodes_LB   = hypsometry.area_nodes_LB;
+    area_nodes_FH   = hypsometry.area_nodes_FH;
+    area_nodes_FHB  = hypsometry.area_nodes_FHB;
+    V_nodes_LF      = hypsometry.V_nodes_LF;
+    V_nodes_LH      = hypsometry.V_nodes_LH;
+    V_nodes_LB      = hypsometry.V_nodes_LB;
+    V_nodes_FH      = hypsometry.V_nodes_FH;
+    V_nodes_FHB     = hypsometry.V_nodes_FHB;
 
     % pack lakes vol, area, and elevation
     lakes.inflow_old_LF = inflow_old_LF;
@@ -281,27 +338,6 @@ all_data.h_LB = elev_results_LB;
 all_data.a_LB = area_results_LB;
 all_data.v_LB = vol_results_LB;
 %all_data.hypsometry = hypsometry;
-
-% % Save to csv file. this has to be implemented
-% fprintf(outDataFile,'%f, %f, %f, %f\n',year, LBelev, LHelev, LFelev);
-
-% % converts .csv to a matrix
-% M = importdata('LL.csv',',',1);
-% data = M.data;
-
-% %finds and displays a year when the lakes are overflowing
-% LBmax = max(all_data.e_LB);
-% LHmax = max(all_data.e_LH);
-% LFmax = max(all_data.e_LF);
-% [r,c] = find(all_data.e_LB == LBmax);
-% LBy = t_vec(c);
-% [r,c] = find(all_data.e_LH == LHmax);
-% LHy = t_vec(c);
-% [r,c] = find(all_data.e_LF == LFmax);
-% LFy = t_vec(c);
-
-% disp('         LB          LH          LF')
-% disp([LBy, LHy, LFy])
 
 %% --------------------Plotting---------------------
 

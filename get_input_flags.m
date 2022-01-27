@@ -17,7 +17,6 @@ function [ flags ] = get_input_flags
 %     3 - average all years
 
     flags.series_flag       = 3;
-
 %
 %     0 - read hypsometry data from external file or 
 %     1 - generate hypsometry data in matlab function get_geometry.m

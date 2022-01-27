@@ -1,9 +1,9 @@
-function [ hypsometry ] = get_hypsometry(flags)
+function [ hypsometry ] = get_hypsometry(flags, spill_flag)
 %get_hypsometry function calculates surface area and volume of each TV
 %basin (LF, LH, and LB) based on the hypsometric curves developed during
 %this project. Surface area and volume are interpolated to 1cm intervals
 
-flags = flags;
+%flags = get_input_flags;
 
 % set convergence criteria
 elev_cutoff = 0.001;   % meters between successive iterations
@@ -16,45 +16,73 @@ HB_spillpoint  = 156.4;
 % Min Scenario
 if(flags.GLW_scenario == 0)
     
-    % TODO: use spill-over switch to change hypsometry!!    
+    % TODO: use spill-over switch to change hypsometry!!
+    if(spill_flag == 0)
 
-    % % Bonney
-    % load DATA/A_data_minRIS_LB_350m.txt;
-    % h_0_LB = 24.056;
-    % elev_LB = A_data_minRIS_LB_350m(:,1);
-    % area_LB = A_data_minRIS_LB_350m(:,2);
-    % clear A_data_minRIS_LB_350m;
-    % % Hoare
-    % load DATA/A_data_minRIS_LH_350m.txt;
-    % h_0_LH = 39.855;
-    % elev_LH = A_data_minRIS_LH_350m(:,1);
-    % area_LH = A_data_minRIS_LH_350m(:,2);
-    % clear A_data_minRIS_LH_350m;
-    % % Fryxell
-    % load DATA/A_data_minRIS_LF_350m.txt;
-    % h_0_LF = -4.512;
-    % elev_LF = A_data_minRIS_LF_350m(:,1);
-    % area_LF = A_data_minRIS_LF_350m(:,2);
-    % clear A_data_minRIS_LF_350m;
+        % Bonney
+        load DATA/A_data_minRIS_LB_350m.txt;
+        h_0_LB = 24.056;
+        elev_LB = A_data_minRIS_LB_350m(:,1);
+        area_LB = A_data_minRIS_LB_350m(:,2);
+        clear A_data_minRIS_LB_350m;
+        % Hoare
+        load DATA/A_data_minRIS_LH_350m.txt;
+        h_0_LH = 39.855;
+        elev_LH = A_data_minRIS_LH_350m(:,1);
+        area_LH = A_data_minRIS_LH_350m(:,2);
+        clear A_data_minRIS_LH_350m;
+        % Fryxell
+        load DATA/A_data_minRIS_LF_350m.txt;
+        h_0_LF = -4.512;
+        elev_LF = A_data_minRIS_LF_350m(:,1);
+        area_LF = A_data_minRIS_LF_350m(:,2);
+        clear A_data_minRIS_LF_350m;
     
+    elseif (spill_flag == 1)
 
-    load DATA/A_data_min_LB.txt;
-    h_0_LB = 24.056;
-    elev_LB = A_data_min_LB(:,1);
-    area_LB = A_data_min_LB(:,2);
-    clear A_data_min_LB;
-    % Hoare
-    load DATA/A_data_min_LH.txt;
-    h_0_LH = 39.855;
-    elev_LH = A_data_min_LH(:,1);
-    area_LH = A_data_min_LH(:,2);
-    clear A_data_min_LH;
-    % Fryxell
-    load DATA/A_data_min_LF.txt;
-    h_0_LF = -4.512;
-    elev_LF = A_data_min_LF(:,1);
-    area_LF = A_data_min_LF(:,2);
-    clear A_data_min_LF;
+        % TODO: rename these files to reflect that they are merged basins
+        % Bonney
+        load DATA/A_data_minRIS_LB_350m.txt;
+        h_0_LB = 24.056;
+        elev_LB = A_data_minRIS_LB_350m(:,1);
+        area_LB = A_data_minRIS_LB_350m(:,2);
+        clear A_data_minRIS_LB_350m;
+        % Hoare
+        load DATA/A_data_min_LH.txt;
+        h_0_LH = 39.855;
+        elev_LH = A_data_min_LH(:,1);
+        area_LH = A_data_min_LH(:,2);
+        clear A_data_min_LH;
+        % Fryxell
+        load DATA/A_data_min_LF.txt;
+        h_0_LF = -4.512;
+        elev_LF = A_data_min_LF(:,1);
+        area_LF = A_data_min_LF(:,2);
+        clear A_data_min_LF;
+
+    elseif (spill_flag == 2)
+
+        % TODO: rename these files to reflect that they are merged basins
+        % Bonney
+        load DATA/A_data_min_LB.txt;
+        h_0_LB = 24.056;
+        elev_LB = A_data_min_LB(:,1);
+        area_LB = A_data_min_LB(:,2);
+        clear A_data_min_LB;
+        % Hoare
+        load DATA/A_data_min_LH.txt;
+        h_0_LH = 39.855;
+        elev_LH = A_data_min_LH(:,1);
+        area_LH = A_data_min_LH(:,2);
+        clear A_data_min_LH;
+        % Fryxell
+        load DATA/A_data_min_LF.txt;
+        h_0_LF = -4.512;
+        elev_LF = A_data_min_LF(:,1);
+        area_LF = A_data_min_LF(:,2);
+        clear A_data_min_LF;
+
+    end
     
     % TODO: Delete below?
     % Fryxell + Hoare
@@ -89,7 +117,7 @@ elseif(flags.GLW_scenario == 1)
     area_LF = A_data_LF(:,2);
     clear A_data_LF;
 % No RIS Scenario
-elseif(flags.GLW_scenario == 2)
+elseif(flags.GLW_scenario >= 2)
     % Bonney
     load DATA/A_data_noRIS_LB.txt;
     h_0_LB = 23.73;
