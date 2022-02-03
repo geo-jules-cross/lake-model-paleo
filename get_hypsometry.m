@@ -1,9 +1,7 @@
-function [ hypsometry ] = get_hypsometry(flags, spill_flag)
+function [ hypsometry ] = get_hypsometry(flags)
 %get_hypsometry function calculates surface area and volume of each TV
 %basin (LF, LH, and LB) based on the hypsometric curves developed during
-%this project. Surface area and volume are interpolated to 1cm intervals
-
-%flags = get_input_flags;
+%this project. Surface area and volume are interpolated to 1 cm intervals
 
 % set convergence criteria
 elev_cutoff = 0.001;   % meters between successive iterations
@@ -17,7 +15,7 @@ HB_spillpoint  = 156.4;
 if(flags.GLW_scenario == 0)
     
     % TODO: use spill-over switch to change hypsometry!!
-    if(spill_flag == 0)
+    if(flags.spill_flag == 0)
 
         % Bonney
         load DATA/A_data_minRIS_LB_350m.txt;
@@ -38,7 +36,7 @@ if(flags.GLW_scenario == 0)
         area_LF = A_data_minRIS_LF_350m(:,2);
         clear A_data_minRIS_LF_350m;
     
-    elseif (spill_flag == 1)
+    elseif (flags.spill_flag == 1)
 
         % TODO: rename these files to reflect that they are merged basins
         % Bonney
@@ -60,7 +58,7 @@ if(flags.GLW_scenario == 0)
         area_LF = A_data_min_LF(:,2);
         clear A_data_min_LF;
 
-    elseif (spill_flag == 2)
+    elseif (flags.spill_flag == 2)
 
         % TODO: rename these files to reflect that they are merged basins
         % Bonney

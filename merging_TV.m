@@ -143,8 +143,8 @@ for j = 1:n_steps
         outflow_old_LF = 0;
         
         % update hypsometry
-        spill_flag = 0;
-        hypsometry = get_hypsometry(flags, spill_flag);
+        flags.spill_flag = 0;
+        hypsometry = get_hypsometry(flags);
 
     % Lake Hoare -> Lake Fryxell
     elseif (elev_new_LH > FH_spillpoint) & (elev_new_LF < FH_spillpoint)
@@ -158,8 +158,8 @@ for j = 1:n_steps
         outflow_new_LF = outflow_old_LF;
         
         % update hypsometry
-        spill_flag = 0;
-        hypsometry = get_hypsometry(flags, spill_flag);
+        flags.spill_flag = 0;
+        hypsometry = get_hypsometry(flags);
 
     % Lake Bonney -> Lake Hoare
     elseif (elev_new_LH < HB_spillpoint) & (elev_new_LB > HB_spillpoint)
@@ -173,8 +173,8 @@ for j = 1:n_steps
         outflow_new_LF = outflow_old_LF;
         
         % update hypsometry
-        spill_flag = 0;
-        hypsometry = get_hypsometry(flags, spill_flag);
+        flags.spill_flag = 0;
+        hypsometry = get_hypsometry(flags);
         
     % Lake Hoare + Lake Fryxell
     elseif (elev_new_LF > FH_spillpoint) & (elev_new_LH > FH_spillpoint) & (elev_new_LF < HB_spillpoint)
@@ -186,8 +186,8 @@ for j = 1:n_steps
         outflow_new_LF = (outflow_old_LH + outflow_old_LF)/2;
         
         % update hypsometry
-        spill_flag = 1;
-        hypsometry = get_hypsometry(flags, spill_flag);
+        flags.spill_flag = 1;
+        hypsometry = get_hypsometry(flags);
 
     % Lake Hoare + Lake Fryxell -> Lake Bonney
     elseif (elev_new_LF > HB_spillpoint) & (elev_new_LB < HB_spillpoint) & (elev_new_LH > HB_spillpoint)
@@ -203,8 +203,8 @@ for j = 1:n_steps
         outflow_old_LF = 0;
 
         % update hypsometry
-        spill_flag = 1;
-        hypsometry = get_hypsometry(flags, spill_flag);
+        flags.spill_flag = 1;
+        hypsometry = get_hypsometry(flags);
 
     % Lake Bonney + Lake Hoare + Lake Fryxell
     elseif (elev_new_LB > HB_spillpoint) & (elev_new_LH > HB_spillpoint) & (elev_new_LF > HB_spillpoint)
@@ -216,8 +216,8 @@ for j = 1:n_steps
         outflow_new_LF = (outflow_old_LB + outflow_old_LH + outflow_old_LF)/3;
         
         % update hypsometry
-        spill_flag = 2;
-        hypsometry = get_hypsometry(flags, spill_flag);
+        flags.spill_flag = 2;
+        hypsometry = get_hypsometry(flags);
 
     % Separate Lakes
     else

@@ -9,7 +9,13 @@ function [ flags ] = get_input_flags
 %	  1 - Max RIS
 %     2 - No RIS
 
-    flags.GLW_scenario      = 0;  
+    flags.GLW_scenario      = 0;
+%
+%     0 - three separate lakes
+%     1 - Fryxell + Hoare
+%     2 - Fryxell + Hoare + Bonney
+
+    flags.spill_flag        = 0;
 %
 %     0 - all years
 %     1 - 1996 to 2001

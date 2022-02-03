@@ -4,17 +4,11 @@ clear;
 % setup simulation run and get flags
 flags = get_input_flags;
 
-%     0 - three separate lakes
-%     1 - Fryxell + Hoare
-%     2 - Fryxell + Hoare + Bonney
-
-spill_flag        = 0;
-
 % setup times
 times = get_times;
 
 %load area/elevation for each basin at a fine elevation resolution
-hypsometry = get_hypsometry(flags, spill_flag);
+hypsometry = get_hypsometry(flags);
 
 % Check melt flag and rebuild input files
 if(flags.melt == 1)
