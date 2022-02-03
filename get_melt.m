@@ -65,7 +65,9 @@ function [] = get_melt
                     LHYrVol(y,b) = modelSmVol(y,doB);
                 % Fryxell
                 elseif(basinOrder(b) >= 43 && basinOrder(b) <= 90)
-                    LFYrVol(y,b) = modelSmVol(y,doB) + 2000000;
+                    %LFYrVol(y,b) = modelSmVol(y,doB) + 2000000;
+                    LFYrVol(y,b) = modelSmVol(y,doB) + 200000;
+                    %LFYrVol(y,b) = modelSmVol(y,doB) + 0;
                 end
             end
         end
