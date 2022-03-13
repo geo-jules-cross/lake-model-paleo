@@ -14,8 +14,12 @@ function [] = get_melt
 
     % Min Scenario
     if(flags.GLW_scenario == 0)
-            runDate='RIS_Scenarios/20210129_min-ris_-4c_0pt3alb/';
-            runname= 'basin-min-ris_-4c_0pt3alb.mat';
+%             runDate='RIS_Scenarios/20210129_min-ris_-4c_0pt3alb/';
+%             runname= 'basin-min-ris_-4c_0pt3alb.mat';
+            
+            runDate='RIS_Scenarios/20211013_test/';
+            runname= 'basin-20211013_-4C_0.37A_1W.mat';
+    
     % Max Scenario
     elseif(flags.GLW_scenario == 1)
             runDate='';
@@ -66,8 +70,8 @@ function [] = get_melt
                 % Fryxell
                 elseif(basinOrder(b) >= 43 && basinOrder(b) <= 90)
                     %LFYrVol(y,b) = modelSmVol(y,doB) + 2000000;
-                    LFYrVol(y,b) = modelSmVol(y,doB) + 200000;
-                    %LFYrVol(y,b) = modelSmVol(y,doB) + 0;
+                    %LFYrVol(y,b) = modelSmVol(y,doB) + 200000;
+                    LFYrVol(y,b) = modelSmVol(y,doB) + 0;
                 end
             end
         end
@@ -179,9 +183,6 @@ function [] = get_melt
         % Sum lake arrays
         lakeYrVol = [sum(LBYrVol,2) sum(LHYrVol,2) sum(LFYrVol,2)];
         
-        % Remove 1995-1996
-        lakeYrVol = lakeYrVol(2:18,1:3);
-        
         % Add subaqueous and snowmelt fluxes (m3/year)
         for y = 1:17
             % Bonney - subaqueous flux
@@ -199,6 +200,9 @@ function [] = get_melt
         fileList = {'DATA/Q_glacier_future_LB.txt', 'DATA/Q_glacier_future_LH.txt', 'DATA/Q_glacier_future_LF.txt'};
 
     end % Future Scenario
+
+% Remove 1995-1996
+    lakeYrVol = lakeYrVol(2:18,1:3);
 
 % Average lake arrays
     lakeAvgVol = mean(lakeYrVol);

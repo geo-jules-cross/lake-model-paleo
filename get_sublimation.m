@@ -12,8 +12,8 @@ function [] = get_sublimation
     years(:,1)= 1995:2012;
     
     % Adjustments
-%     Temp_adj = -4.0;
-    Temp_adj = 0.0;
+    Temp_adj = -4.0;
+%     Temp_adj = 0.0;
 
 %     Wind_adj = 0.8;
     Wind_adj = 1.0;
