@@ -32,23 +32,23 @@ h_0_LB          = hypsometry.h_0_LB;
 area_LF         = hypsometry.area_LF;
 area_LH         = hypsometry.area_LH;
 area_LB         = hypsometry.area_LB;
-area_FH         = hypsometry.area_FH;
-area_FHB        = hypsometry.area_FHB;
+%area_FH         = hypsometry.area_FH;
+%area_FHB        = hypsometry.area_FHB;
 elev_nodes_LF   = hypsometry.elev_nodes_LF;
 elev_nodes_LH   = hypsometry.elev_nodes_LH;
 elev_nodes_LB   = hypsometry.elev_nodes_LB;
-elev_nodes_FH   = hypsometry.elev_nodes_FH;
-elev_nodes_FHB  = hypsometry.elev_nodes_FHB;
+%elev_nodes_FH   = hypsometry.elev_nodes_FH;
+%elev_nodes_FHB  = hypsometry.elev_nodes_FHB;
 area_nodes_LF   = hypsometry.area_nodes_LF;
 area_nodes_LH   = hypsometry.area_nodes_LH;
 area_nodes_LB   = hypsometry.area_nodes_LB;
-area_nodes_FH   = hypsometry.area_nodes_FH;
-area_nodes_FHB  = hypsometry.area_nodes_FHB;
+%area_nodes_FH   = hypsometry.area_nodes_FH;
+%area_nodes_FHB  = hypsometry.area_nodes_FHB;
 V_nodes_LF      = hypsometry.V_nodes_LF;
 V_nodes_LH      = hypsometry.V_nodes_LH;
 V_nodes_LB      = hypsometry.V_nodes_LB;
-V_nodes_FH      = hypsometry.V_nodes_FH;
-V_nodes_FHB     = hypsometry.V_nodes_FHB;
+%V_nodes_FH      = hypsometry.V_nodes_FH;
+%V_nodes_FHB     = hypsometry.V_nodes_FHB;
 
 % get spill-over points
 FH_spillpoint  = hypsometry.FH_spillpoint;
@@ -138,8 +138,6 @@ for j = 1:n_steps
         outflow_new_LH = outflow_old_LH;
         inflow_new_LF = 0;
         outflow_new_LF = 0;
-        inflow_old_LF = 0;
-        outflow_old_LF = 0;
         % update hypsometry
         flags.spill_flag = 0;
         hypsometry = get_hypsometry(flags);
@@ -150,8 +148,6 @@ for j = 1:n_steps
         outflow_new_LB = outflow_old_LB;
         inflow_new_LH = 0;
         outflow_new_LH = 0;
-        inflow_old_LH = 0;
-        outflow_old_LH = 0;
         inflow_new_LF = inflow_old_LH + inflow_old_LF;
         outflow_new_LF = outflow_old_LF;
         % update hypsometry
@@ -176,12 +172,8 @@ for j = 1:n_steps
         outflow_new_LB = outflow_old_LB;
         inflow_new_LH = 0;
         outflow_new_LH = 0;
-        inflow_old_LH = 0;
-        outflow_old_LH = 0;
         inflow_new_LF = 0;
         outflow_new_LF = 0;
-        inflow_old_LF = 0;
-        outflow_old_LF = 0;
         % update hypsometry
         flags.spill_flag = 1;
         hypsometry = get_hypsometry(flags);
@@ -190,8 +182,6 @@ for j = 1:n_steps
     elseif (elev_new_LB >= HB_spillpoint) && (elev_new_LH < HB_spillpoint) && (elev_new_LH >= FH_spillpoint) && (elev_new_LF < FH_spillpoint)
         inflow_new_LB = 0;
         outflow_new_LB = 0;
-        inflow_old_LB = 0;
-        outflow_old_LB = 0;
         inflow_new_LH = inflow_old_LB + inflow_old_LH;
         outflow_new_LH = outflow_old_LH;
         inflow_new_LF = inflow_old_LF;
@@ -204,8 +194,6 @@ for j = 1:n_steps
     elseif (elev_new_LB >= HB_spillpoint) && (elev_new_LH < HB_spillpoint) && (elev_new_LH >= FH_spillpoint) && (elev_new_LF >= FH_spillpoint) && (elev_new_LF < HB_spillpoint)
         inflow_new_LB = 0;
         outflow_new_LB = 0;
-        inflow_old_LB = 0;
-        outflow_old_LB = 0;
         inflow_new_LH = inflow_old_LB + inflow_old_LH + inflow_old_LF;
         outflow_new_LH = (outflow_old_LH + outflow_old_LF)/2;
         inflow_new_LF = inflow_old_LB + inflow_old_LH + inflow_old_LF;
@@ -235,8 +223,9 @@ for j = 1:n_steps
         inflow_new_LF = inflow_old_LF;
         outflow_new_LF = outflow_old_LF;
         % update hypsometry
-        %spill_flag = 0;
-        %hypsometry = get_hypsometry(flags, spill_flag);
+        if (flags.spill_flag > -1)
+            hypsometry = get_hypsometry(flags);
+        end
 
     end
 
@@ -244,23 +233,23 @@ for j = 1:n_steps
     area_LF         = hypsometry.area_LF;
     area_LH         = hypsometry.area_LH;
     area_LB         = hypsometry.area_LB;
-    area_FH         = hypsometry.area_FH;
-    area_FHB        = hypsometry.area_FHB;
+    %area_FH         = hypsometry.area_FH;
+    %area_FHB        = hypsometry.area_FHB;
     elev_nodes_LF   = hypsometry.elev_nodes_LF;
     elev_nodes_LH   = hypsometry.elev_nodes_LH;
     elev_nodes_LB   = hypsometry.elev_nodes_LB;
-    elev_nodes_FH   = hypsometry.elev_nodes_FH;
-    elev_nodes_FHB  = hypsometry.elev_nodes_FHB;
+    %elev_nodes_FH   = hypsometry.elev_nodes_FH;
+    %elev_nodes_FHB  = hypsometry.elev_nodes_FHB;
     area_nodes_LF   = hypsometry.area_nodes_LF;
     area_nodes_LH   = hypsometry.area_nodes_LH;
     area_nodes_LB   = hypsometry.area_nodes_LB;
-    area_nodes_FH   = hypsometry.area_nodes_FH;
-    area_nodes_FHB  = hypsometry.area_nodes_FHB;
+    %area_nodes_FH   = hypsometry.area_nodes_FH;
+    %area_nodes_FHB  = hypsometry.area_nodes_FHB;
     V_nodes_LF      = hypsometry.V_nodes_LF;
     V_nodes_LH      = hypsometry.V_nodes_LH;
     V_nodes_LB      = hypsometry.V_nodes_LB;
-    V_nodes_FH      = hypsometry.V_nodes_FH;
-    V_nodes_FHB     = hypsometry.V_nodes_FHB;
+    %V_nodes_FH      = hypsometry.V_nodes_FH;
+    %V_nodes_FHB     = hypsometry.V_nodes_FHB;
 
     % pack lakes vol, area, and elevation
     lakes.inflow_old_LF = inflow_old_LF;

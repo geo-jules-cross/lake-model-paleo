@@ -11,11 +11,12 @@ function [ flags ] = get_input_flags
 
     flags.GLW_scenario      = 0;
 %
+%     -1 - initial state
 %     0 - three separate lakes
 %     1 - Fryxell + Hoare
 %     2 - Fryxell + Hoare + Bonney
 
-    flags.spill_flag        = 0;
+    flags.spill_flag        = -1; % don't change this
 %
 %     0 - all years
 %     1 - 1996 to 2001
@@ -32,12 +33,12 @@ function [ flags ] = get_input_flags
 %     0 - no
 %     1 - yes
 
-    flags.melt				= 1;	% Rebuild melt
+    flags.melt				= 0;	% Rebuild melt
 %
 %     0 - no
 %     1 - yes
 
-    flags.sublimation		= 1;	% Rebuild sublimation
+    flags.sublimation		= 0;	% Rebuild sublimation
 %
 %
 %  flags are returned in a structure called "flags"
