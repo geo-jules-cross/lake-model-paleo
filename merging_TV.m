@@ -211,7 +211,7 @@ for j = 1:n_steps
         inflow_new_LF = inflow_old_LB + inflow_old_LH + inflow_old_LF;
         outflow_new_LF = (outflow_old_LH + outflow_old_LF)/2;
         % update hypsometry
-        flags.spill_flag = 1;
+        flags.spill_flag = 0;
         hypsometry = get_hypsometry(flags);
    
     % Lake Bonney + Lake Hoare + Lake Fryxell
