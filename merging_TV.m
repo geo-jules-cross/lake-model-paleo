@@ -129,10 +129,9 @@ for j = 1:n_steps
     outflow_old_LH = outflow_LH(j);
     outflow_old_LB = outflow_LB(j);
     
-    % Check if lake spill-over happens and which case
-    
+    % Check if lake spill-over happens and which case:
     % Lake Fryxell -> Lake Hoare
-    if (elev_new_LF > FH_spillpoint) & (elev_new_LH < FH_spillpoint)
+    if (elev_new_LB < HB_spillpoint) && (elev_new_LF >= FH_spillpoint) && (elev_new_LH < FH_spillpoint) && (elev_new_LF < HB_spillpoint)
         inflow_new_LB = inflow_old_LB;
         outflow_new_LB = outflow_old_LB;
         inflow_new_LH = inflow_old_LH + inflow_old_LF;
@@ -141,13 +140,12 @@ for j = 1:n_steps
         outflow_new_LF = 0;
         inflow_old_LF = 0;
         outflow_old_LF = 0;
-        
         % update hypsometry
         flags.spill_flag = 0;
         hypsometry = get_hypsometry(flags);
 
     % Lake Hoare -> Lake Fryxell
-    elseif (elev_new_LH > FH_spillpoint) & (elev_new_LF < FH_spillpoint)
+    elseif (elev_new_LB < HB_spillpoint) && (elev_new_LF < FH_spillpoint) && (elev_new_LH >= FH_spillpoint) && (elev_new_LH < HB_spillpoint)
         inflow_new_LB = inflow_old_LB;
         outflow_new_LB = outflow_old_LB;
         inflow_new_LH = 0;
@@ -156,13 +154,40 @@ for j = 1:n_steps
         outflow_old_LH = 0;
         inflow_new_LF = inflow_old_LH + inflow_old_LF;
         outflow_new_LF = outflow_old_LF;
-        
         % update hypsometry
         flags.spill_flag = 0;
         hypsometry = get_hypsometry(flags);
 
+    % Lake Hoare + Lake Fryxell
+    elseif (elev_new_LB < HB_spillpoint) && (elev_new_LF >= FH_spillpoint) && (elev_new_LH >= FH_spillpoint) && (elev_new_LF < HB_spillpoint) && (elev_new_LH < HB_spillpoint)
+        inflow_new_LB = inflow_old_LB;
+        outflow_new_LB = outflow_old_LB;
+        inflow_new_LH = (inflow_old_LH + inflow_old_LF);
+        outflow_new_LH = (outflow_old_LH + outflow_old_LF)/2;
+        inflow_new_LF = (inflow_old_LH + inflow_old_LF);
+        outflow_new_LF = (outflow_old_LH + outflow_old_LF)/2;
+        % update hypsometry
+        flags.spill_flag = 1;
+        hypsometry = get_hypsometry(flags);
+
+    % Lake Hoare + Lake Fryxell -> Lake Bonney
+    elseif (elev_new_LB < HB_spillpoint) && (elev_new_LF >= HB_spillpoint) &&  (elev_new_LH >= HB_spillpoint)
+        inflow_new_LB = inflow_old_LB + inflow_old_LH + inflow_old_LF;
+        outflow_new_LB = outflow_old_LB;
+        inflow_new_LH = 0;
+        outflow_new_LH = 0;
+        inflow_old_LH = 0;
+        outflow_old_LH = 0;
+        inflow_new_LF = 0;
+        outflow_new_LF = 0;
+        inflow_old_LF = 0;
+        outflow_old_LF = 0;
+        % update hypsometry
+        flags.spill_flag = 1;
+        hypsometry = get_hypsometry(flags);
+
     % Lake Bonney -> Lake Hoare
-    elseif (elev_new_LH < HB_spillpoint) & (elev_new_LB > HB_spillpoint)
+    elseif (elev_new_LB >= HB_spillpoint) && (elev_new_LH < HB_spillpoint) && (elev_new_LH >= FH_spillpoint) && (elev_new_LF < FH_spillpoint)
         inflow_new_LB = 0;
         outflow_new_LB = 0;
         inflow_old_LB = 0;
@@ -171,50 +196,32 @@ for j = 1:n_steps
         outflow_new_LH = outflow_old_LH;
         inflow_new_LF = inflow_old_LF;
         outflow_new_LF = outflow_old_LF;
-        
         % update hypsometry
         flags.spill_flag = 0;
         hypsometry = get_hypsometry(flags);
-        
-    % Lake Hoare + Lake Fryxell
-    elseif (elev_new_LF > FH_spillpoint) & (elev_new_LH > FH_spillpoint) & (elev_new_LF < HB_spillpoint)
-        inflow_new_LB = inflow_old_LB;
-        outflow_new_LB = outflow_old_LB;
-        inflow_new_LH = inflow_old_LH + inflow_old_LF;
-        outflow_new_LH = (outflow_old_LH + outflow_old_LF)/2;
-        inflow_new_LF = inflow_old_LH + inflow_old_LF;
-        outflow_new_LF = (outflow_old_LH + outflow_old_LF)/2;
-        
-        % update hypsometry
-        flags.spill_flag = 1;
-        hypsometry = get_hypsometry(flags);
 
-    % Lake Hoare + Lake Fryxell -> Lake Bonney
-    elseif (elev_new_LF > HB_spillpoint) & (elev_new_LB < HB_spillpoint) & (elev_new_LH > HB_spillpoint)
-        inflow_new_LB = inflow_old_LB + inflow_old_LH + inflow_old_LF;
-        outflow_new_LB = outflow_old_LB;
-        inflow_new_LH = 0;
-        outflow_new_LH = 0;
-        inflow_old_LH = 0;
-        outflow_old_LH = 0;
-        inflow_new_LF = 0;
-        outflow_new_LF = 0;
-        inflow_old_LF = 0;
-        outflow_old_LF = 0;
-
-        % update hypsometry
-        flags.spill_flag = 1;
-        hypsometry = get_hypsometry(flags);
-
-    % Lake Bonney + Lake Hoare + Lake Fryxell
-    elseif (elev_new_LB > HB_spillpoint) & (elev_new_LH > HB_spillpoint) & (elev_new_LF > HB_spillpoint)
-        inflow_new_LB = inflow_old_LB + inflow_old_LH + inflow_old_LF;
-        outflow_new_LB = (outflow_old_LB + outflow_old_LH + outflow_old_LF)/3;
+    % Lake Bonney -> Lake Hoare -> Lake Fryxell
+    elseif (elev_new_LB >= HB_spillpoint) && (elev_new_LH < HB_spillpoint) && (elev_new_LH >= FH_spillpoint) && (elev_new_LF >= FH_spillpoint) && (elev_new_LF < HB_spillpoint)
+        inflow_new_LB = 0;
+        outflow_new_LB = 0;
+        inflow_old_LB = 0;
+        outflow_old_LB = 0;
         inflow_new_LH = inflow_old_LB + inflow_old_LH + inflow_old_LF;
-        outflow_new_LH = (outflow_old_LB + outflow_old_LH + outflow_old_LF)/3;
+        outflow_new_LH = (outflow_old_LH + outflow_old_LF)/2;
         inflow_new_LF = inflow_old_LB + inflow_old_LH + inflow_old_LF;
+        outflow_new_LF = (outflow_old_LH + outflow_old_LF)/2;
+        % update hypsometry
+        flags.spill_flag = 1;
+        hypsometry = get_hypsometry(flags);
+   
+    % Lake Bonney + Lake Hoare + Lake Fryxell
+    elseif (elev_new_LB >= HB_spillpoint) && (elev_new_LH >= HB_spillpoint) && (elev_new_LF >= HB_spillpoint)
+        inflow_new_LB = (inflow_old_LB + inflow_old_LH + inflow_old_LF);
+        outflow_new_LB = (outflow_old_LB + outflow_old_LH + outflow_old_LF)/3;
+        inflow_new_LH = (inflow_old_LB + inflow_old_LH + inflow_old_LF);
+        outflow_new_LH = (outflow_old_LB + outflow_old_LH + outflow_old_LF)/3;
+        inflow_new_LF = (inflow_old_LB + inflow_old_LH + inflow_old_LF);
         outflow_new_LF = (outflow_old_LB + outflow_old_LH + outflow_old_LF)/3;
-        
         % update hypsometry
         flags.spill_flag = 2;
         hypsometry = get_hypsometry(flags);
@@ -227,7 +234,6 @@ for j = 1:n_steps
         outflow_new_LH = outflow_old_LH;
         inflow_new_LF = inflow_old_LF;
         outflow_new_LF = outflow_old_LF;
-
         % update hypsometry
         %spill_flag = 0;
         %hypsometry = get_hypsometry(flags, spill_flag);

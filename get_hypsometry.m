@@ -13,86 +13,66 @@ HB_spillpoint  = 156.4;
 
 % Min Scenario
 if(flags.GLW_scenario == 0)
-    
     % TODO: use spill-over switch to change hypsometry!!
-    if(flags.spill_flag == 0)
-
+    if(flags.spill_flag == 0) % seperate lakes
         % Bonney
-        load DATA/A_data_minRIS_LB_350m.txt;
+        load DATA/A_data_minRIS_LB_350m_V20220701.txt;
         h_0_LB = 24.056;
-        elev_LB = A_data_minRIS_LB_350m(:,1);
-        area_LB = A_data_minRIS_LB_350m(:,2);
-        clear A_data_minRIS_LB_350m;
+        elev_LB = A_data_minRIS_LB_350m_V20220701(:,1);
+        area_LB = A_data_minRIS_LB_350m_V20220701(:,2);
+        clear A_data_minRIS_LB_350m_V20220701;
         % Hoare
-        load DATA/A_data_minRIS_LH_350m.txt;
+        load DATA/A_data_minRIS_LH_350m_V20220701.txt;
         h_0_LH = 39.855;
-        elev_LH = A_data_minRIS_LH_350m(:,1);
-        area_LH = A_data_minRIS_LH_350m(:,2);
-        clear A_data_minRIS_LH_350m;
+        elev_LH = A_data_minRIS_LH_350m_V20220701(:,1);
+        area_LH = A_data_minRIS_LH_350m_V20220701(:,2);
+        clear A_data_minRIS_LH_350m_V20220701;
         % Fryxell
-        load DATA/A_data_minRIS_LF_350m.txt;
+        load DATA/A_data_minRIS_LF_350m_V20220701.txt;
         h_0_LF = -4.512;
-        elev_LF = A_data_minRIS_LF_350m(:,1);
-        area_LF = A_data_minRIS_LF_350m(:,2);
-        clear A_data_minRIS_LF_350m;
-    
-    elseif (flags.spill_flag == 1)
-
-        % TODO: rename these files to reflect that they are merged basins
+        elev_LF = A_data_minRIS_LF_350m_V20220701(:,1);
+        area_LF = A_data_minRIS_LF_350m_V20220701(:,2);
+        clear A_data_minRIS_LF_350m_V20220701;
+    elseif (flags.spill_flag == 1) % Lake Hoare + Lake Fryxell
         % Bonney
-        load DATA/A_data_minRIS_LB_350m.txt;
+        load DATA/A_data_minRIS_LB_350m_V20220701.txt;
         h_0_LB = 24.056;
-        elev_LB = A_data_minRIS_LB_350m(:,1);
-        area_LB = A_data_minRIS_LB_350m(:,2);
-        clear A_data_minRIS_LB_350m;
+        elev_LB = A_data_minRIS_LB_350m_V20220701(:,1);
+        area_LB = A_data_minRIS_LB_350m_V20220701(:,2);
+        clear A_data_minRIS_LB_350m_V20220701;
         % Hoare
-        load DATA/A_data_min_LH.txt;
+        load DATA/A_data_minRIS_FH_350m_V20220701.txt;
         h_0_LH = 39.855;
-        elev_LH = A_data_min_LH(:,1);
-        area_LH = A_data_min_LH(:,2);
-        clear A_data_min_LH;
+        elev_LH = A_data_minRIS_FH_350m_V20220701(:,1);
+        area_LH = A_data_minRIS_FH_350m_V20220701(:,2);
+        clear A_data_minRIS_FH_350m_V20220701;
         % Fryxell
-        load DATA/A_data_min_LF.txt;
+        load DATA/A_data_minRIS_FH_350m_V20220701.txt;
         h_0_LF = -4.512;
-        elev_LF = A_data_min_LF(:,1);
-        area_LF = A_data_min_LF(:,2);
-        clear A_data_min_LF;
-
-    elseif (flags.spill_flag == 2)
-
-        % TODO: rename these files to reflect that they are merged basins
+        elev_LF = A_data_minRIS_FH_350m_V20220701(:,1);
+        area_LF = A_data_minRIS_FH_350m_V20220701(:,2);
+        clear A_data_minRIS_FH_350m_V20220701;
+    elseif (flags.spill_flag == 2) % Lake Fryxell + Lake Hoare + Lake Bonney
         % Bonney
-        load DATA/A_data_min_LB.txt;
+        load DATA/A_data_minRIS_FHB_350m_V20220701.txt;
         h_0_LB = 24.056;
-        elev_LB = A_data_min_LB(:,1);
-        area_LB = A_data_min_LB(:,2);
-        clear A_data_min_LB;
+        elev_LB = A_data_minRIS_FHB_350m_V20220701(:,1);
+        area_LB = A_data_minRIS_FHB_350m_V20220701(:,2);
+        clear A_data_minRIS_FHB_350m_V20220701;
         % Hoare
-        load DATA/A_data_min_LH.txt;
+        load DATA/A_data_minRIS_FHB_350m_V20220701.txt;
         h_0_LH = 39.855;
-        elev_LH = A_data_min_LH(:,1);
-        area_LH = A_data_min_LH(:,2);
-        clear A_data_min_LH;
+        elev_LH = A_data_minRIS_FHB_350m_V20220701(:,1);
+        area_LH = A_data_minRIS_FHB_350m_V20220701(:,2);
+        clear A_data_minRIS_FHB_350m_V20220701;
         % Fryxell
-        load DATA/A_data_min_LF.txt;
+        load DATA/A_data_minRIS_FHB_350m_V20220701.txt;
         h_0_LF = -4.512;
-        elev_LF = A_data_min_LF(:,1);
-        area_LF = A_data_min_LF(:,2);
-        clear A_data_min_LF;
+        elev_LF = A_data_minRIS_FHB_350m_V20220701(:,1);
+        area_LF = A_data_minRIS_FHB_350m_V20220701(:,2);
+        clear A_data_minRIS_FHB_350m_V20220701;
 
     end
-    
-    % TODO: Delete below?
-    % Fryxell + Hoare
-    load DATA/A_data_min_FH.txt;
-    elev_FH = A_data_min_FH(:,1);
-    area_FH = A_data_min_FH(:,2);
-    clear A_data_min_FH;
-    % Fryxell + Hoare + Bonney
-    load DATA/A_data_min_FHB.txt;
-    elev_FHB = A_data_min_FHB(:,1);
-    area_FHB = A_data_min_FHB(:,2);
-    clear A_data_min_FHB;
 
 % Max Scenario
 elseif(flags.GLW_scenario == 1)
@@ -115,6 +95,7 @@ elseif(flags.GLW_scenario == 1)
     area_LF = A_data_LF(:,2);
     clear A_data_LF;
 % No RIS Scenario
+% TODO: Make hypso files for these lakes
 elseif(flags.GLW_scenario >= 2)
     % Bonney
     load DATA/A_data_noRIS_LB.txt;
@@ -147,7 +128,7 @@ elseif(flags.GLW_scenario >= 2)
 end
 
 % interpolate elevation to a finer scale 
-d_elevation = .01;        % meters
+d_elevation = .001;        % meters (default is 0.01 m)
 elev_nodes_LF = elev_LF(1):d_elevation:elev_LF(end);
 elev_nodes_LH = elev_LH(1):d_elevation:elev_LH(end);
 elev_nodes_LB = elev_LB(1):d_elevation:elev_LB(end);
