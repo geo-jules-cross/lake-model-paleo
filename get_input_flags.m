@@ -33,12 +33,12 @@ function [ flags ] = get_input_flags
 %     0 - no
 %     1 - yes
 
-    flags.melt				= 0;	% Rebuild melt
+    flags.melt				= 1;	% Rebuild melt
 %
 %     0 - no
 %     1 - yes
 
-    flags.sublimation		= 0;	% Rebuild sublimation
+    flags.sublimation		= 1;	% Rebuild sublimation
 %
 %
 %  flags are returned in a structure called "flags"
