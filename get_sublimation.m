@@ -224,7 +224,7 @@ function [] = get_sublimation
     end % for l = 1:3
 
     % Data output file
-    outDirectory = '/DATA/';
+    outDirectory = 'DATA/';
 
     % Output file
     fileList = {'DATA/S_data_LB.txt', 'DATA/S_data_LH.txt', 'DATA/S_data_LF.txt'};

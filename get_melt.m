@@ -10,16 +10,12 @@ function [] = get_melt
     flags = get_input_flags;
 
 % Output Directory
-    outDirectory='/Users/Julian/Documents/_Projects/MDV-Lakes-Thesis/melt-model/processed-data/';
+    outDirectory='DATA/melt_model_output/';
 
     % Min Scenario
-    if(flags.GLW_scenario == 0)
-%             runDate='RIS_Scenarios/20210129_min-ris_-4c_0pt3alb/';
-%             runname= 'basin-min-ris_-4c_0pt3alb.mat';
-            
-            runDate='RIS_Scenarios/20211013_test/';
+    if(flags.GLW_scenario == 0) 
+            runDate='20211013_min-ris-4C_0.37A_1W/';
             runname= 'basin-20211013_-4C_0.37A_1W.mat';
-    
     % Max Scenario
     elseif(flags.GLW_scenario == 1)
             runDate='';
@@ -208,7 +204,7 @@ function [] = get_melt
     lakeAvgVol = mean(lakeYrVol);
     
 % Data output file
-    outDirectory = '/DATA/';
+    outDirectory = 'DATA/';
 
 % series simulation type flag: all years = 0, 1996 to 2001 = 1, 2002 to 2013 = 2, average of all years = 3
     series_flag = flags.series_flag;
